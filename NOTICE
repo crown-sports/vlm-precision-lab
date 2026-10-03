@@ -1,0 +1,9 @@
+VLM Precision Lab
+
+experiments/qwen_offload_compat.py adapts the Qwen visual-position offload
+workaround from vllm-project/llm-compressor pull request 1958, Apache-2.0.
+https://github.com/vllm-project/llm-compressor/pull/1958
+
+The quantization adapter uses LLM Compressor's AWQ example and public APIs.
+Quantization kernels, AWQ scaling, packing and execution remain upstream work.
+https://github.com/vllm-project/llm-compressor

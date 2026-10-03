@@ -1,0 +1,12 @@
+{
+  "seed": 741,
+  "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+  "counts": {
+    "calibration": 192,
+    "dev": 300,
+    "test": 0
+  },
+  "groups": "two answer-changing variants per independent generated record",
+  "scope": "shared renderer families; NOT held-out template families or real-world generalization",
+  "license": "Apache-2.0 generated images/annotations; font not redistributed"
+}

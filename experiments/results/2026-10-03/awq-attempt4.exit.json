@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/proj/vlm-precision-lab/.venv-gpu/bin/python",
+    "-u",
+    "experiments/quantize_awq.py",
+    "--model",
+    "models/Qwen3-VL-8B-Instruct",
+    "--dataset",
+    "runs/diagnostic-v2/samples.jsonl",
+    "--selected",
+    "runs/calibration-stratified.jsonl",
+    "--output",
+    "models/awq-stratified"
+  ],
+  "exit_code": -9,
+  "seconds": 587.483373939991,
+  "finished_at": "2026-10-03T07:34:38.200549+00:00",
+  "state": "failed"
+}

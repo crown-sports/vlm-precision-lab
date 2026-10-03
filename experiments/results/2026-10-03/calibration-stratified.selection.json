@@ -1,0 +1,37 @@
+{
+  "strategy": "stratified",
+  "seed": 42,
+  "budget_tokens": 74000,
+  "spent_tokens": 73986,
+  "unused_tokens": 14,
+  "samples": 177,
+  "source_groups": 96,
+  "source_cap": 2,
+  "task_counts": {
+    "graph_edge": 59,
+    "identifier_ocr": 59,
+    "numeric_ocr": 59
+  },
+  "feature_counts": {
+    "task:graph_edge": 59,
+    "font:22": 39,
+    "graph": 59,
+    "crossing": 30,
+    "edge-label": 59,
+    "identifier": 59,
+    "hyphen": 59,
+    "zero-padding": 59,
+    "digits": 118,
+    "task:identifier_ocr": 59,
+    "task:numeric_ocr": 59,
+    "decimal": 59,
+    "positive": 41,
+    "font:12": 44,
+    "parallel": 29,
+    "font:28": 51,
+    "font:16": 43,
+    "negative": 18
+  },
+  "uncovered_features": [],
+  "dataset_sha256": "7adf360c8387086ee26ee4276b5c9447682d4414bbebafbeeb4a28c901f7775b"
+}

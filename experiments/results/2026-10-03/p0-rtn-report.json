@@ -1,0 +1,290 @@
+{
+  "overall": {
+    "samples": 300,
+    "independent_groups": 150,
+    "reference_em": 0.8033333333333333,
+    "candidate_em": 0.7733333333333333,
+    "delta_pp": -3.0000000000000027,
+    "delta_ci95_pp": [
+      -5.333333333333334,
+      -1.0
+    ],
+    "regressions": 11,
+    "recoveries": 2,
+    "regression_rate_on_reference_correct": 0.04564315352697095,
+    "insufficient_groups": false
+  },
+  "tasks": {
+    "graph_edge": {
+      "samples": 100,
+      "independent_groups": 50,
+      "reference_em": 0.41,
+      "candidate_em": 0.32,
+      "delta_pp": -8.999999999999996,
+      "delta_ci95_pp": [
+        -16.0,
+        -2.0
+      ],
+      "regressions": 11,
+      "recoveries": 2,
+      "regression_rate_on_reference_correct": 0.2682926829268293,
+      "insufficient_groups": false
+    },
+    "identifier_ocr": {
+      "samples": 100,
+      "independent_groups": 50,
+      "reference_em": 1.0,
+      "candidate_em": 1.0,
+      "delta_pp": 0.0,
+      "delta_ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "regressions": 0,
+      "recoveries": 0,
+      "regression_rate_on_reference_correct": 0.0,
+      "insufficient_groups": false
+    },
+    "numeric_ocr": {
+      "samples": 100,
+      "independent_groups": 50,
+      "reference_em": 1.0,
+      "candidate_em": 1.0,
+      "delta_pp": 0.0,
+      "delta_ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "regressions": 0,
+      "recoveries": 0,
+      "regression_rate_on_reference_correct": 0.0,
+      "insufficient_groups": false
+    }
+  },
+  "bootstrap": {
+    "unit": "source group",
+    "paired": true,
+    "repetitions": 2000,
+    "seed": 42
+  },
+  "semantic_tasks": {
+    "graph_edge": {
+      "samples": 100,
+      "independent_groups": 50,
+      "reference_em": 0.5,
+      "candidate_em": 0.52,
+      "delta_pp": 2.0000000000000018,
+      "delta_ci95_pp": [
+        0.0,
+        5.0
+      ],
+      "regressions": 0,
+      "recoveries": 2,
+      "regression_rate_on_reference_correct": 0.0,
+      "insufficient_groups": false
+    },
+    "identifier_ocr": {
+      "samples": 100,
+      "independent_groups": 50,
+      "reference_em": 1.0,
+      "candidate_em": 1.0,
+      "delta_pp": 0.0,
+      "delta_ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "regressions": 0,
+      "recoveries": 0,
+      "regression_rate_on_reference_correct": 0.0,
+      "insufficient_groups": false
+    },
+    "numeric_ocr": {
+      "samples": 100,
+      "independent_groups": 50,
+      "reference_em": 1.0,
+      "candidate_em": 1.0,
+      "delta_pp": 0.0,
+      "delta_ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "regressions": 0,
+      "recoveries": 0,
+      "regression_rate_on_reference_correct": 0.0,
+      "insufficient_groups": false
+    }
+  },
+  "semantic_metric": "Unordered exact endpoints for graph_edge; literal exact match for reading tasks",
+  "graph_format_rates": {
+    "reference": 0.78,
+    "candidate": 0.62
+  },
+  "semantic_failures": [],
+  "input_changes": [],
+  "interpretation": "Same input tensors; also check model, decoding and backend manifests",
+  "failures": [
+    {
+      "id": "f65ff21481a45d46-0",
+      "group_id": "f65ff21481a45d46",
+      "task": "graph_edge",
+      "answer": "B,D",
+      "image": "images/f65ff21481a45d46-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L6? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "B,D",
+      "candidate": "D,B",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "23473cecab80aa75-0",
+      "group_id": "23473cecab80aa75",
+      "task": "graph_edge",
+      "answer": "E,F",
+      "image": "images/23473cecab80aa75-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L4? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "E,F",
+      "candidate": "F,E",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "8227ca978e6dbfc3-0",
+      "group_id": "8227ca978e6dbfc3",
+      "task": "graph_edge",
+      "answer": "A,F",
+      "image": "images/8227ca978e6dbfc3-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L5? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "A,F",
+      "candidate": "F,A",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "bde5c10d7606f3f4-0",
+      "group_id": "bde5c10d7606f3f4",
+      "task": "graph_edge",
+      "answer": "B,E",
+      "image": "images/bde5c10d7606f3f4-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L6? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "B,E",
+      "candidate": "E,B",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "e8a8aefe4e3fe0fa-0",
+      "group_id": "e8a8aefe4e3fe0fa",
+      "task": "graph_edge",
+      "answer": "A,F",
+      "image": "images/e8a8aefe4e3fe0fa-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L3? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "A,F",
+      "candidate": "F,A",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "5617cc9d86a5bfb5-0",
+      "group_id": "5617cc9d86a5bfb5",
+      "task": "graph_edge",
+      "answer": "D,E",
+      "image": "images/5617cc9d86a5bfb5-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L2? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "D,E",
+      "candidate": "E,D",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "f4506e5346f69fe5-0",
+      "group_id": "f4506e5346f69fe5",
+      "task": "graph_edge",
+      "answer": "B,D",
+      "image": "images/f4506e5346f69fe5-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L2? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "B,D",
+      "candidate": "D,B",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "2f9e679d16e19daf-0",
+      "group_id": "2f9e679d16e19daf",
+      "task": "graph_edge",
+      "answer": "A,E",
+      "image": "images/2f9e679d16e19daf-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L2? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "A,E",
+      "candidate": "E,A",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "7d60f8f9beaa122b-0",
+      "group_id": "7d60f8f9beaa122b",
+      "task": "graph_edge",
+      "answer": "B,E",
+      "image": "images/7d60f8f9beaa122b-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L1? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "B,E",
+      "candidate": "E,B",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "4b9c59ae1cd05878-0",
+      "group_id": "4b9c59ae1cd05878",
+      "task": "graph_edge",
+      "answer": "C,F",
+      "image": "images/4b9c59ae1cd05878-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L5? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "C,F",
+      "candidate": "F,C",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    },
+    {
+      "id": "8ba1a12e4227eecb-0",
+      "group_id": "8ba1a12e4227eecb",
+      "task": "graph_edge",
+      "answer": "D,F",
+      "image": "images/8ba1a12e4227eecb-0.png",
+      "prompt": "Which two nodes are directly joined by the link labelled L1? Return only the node letters in alphabetical order, separated by one comma (for example A,C).",
+      "reference": "D,F",
+      "candidate": "F,D",
+      "before": true,
+      "after": false,
+      "reference_content_correct": true,
+      "candidate_content_correct": true
+    }
+  ],
+  "provenance": {
+    "manifests_verified": true,
+    "base_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+    "processor_file_hashes_match": true,
+    "processor_settings_changed": [],
+    "reference_mode": "bf16",
+    "candidate_mode": "fake-rtn"
+  },
+  "dataset_sha256": "1ff03d8fef00c505af1719fa84d79b16f8df45f0796c3ece4a273cddeacf5896"
+}

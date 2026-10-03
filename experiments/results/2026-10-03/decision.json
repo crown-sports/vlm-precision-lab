@@ -1,0 +1,10 @@
+{
+  "state": "baseline_complete_no_content_regression",
+  "data_scope": "original synthetic diagnostic development data; no test evaluation",
+  "dataset_file_sha256": "eee6d361278df9f9b0af29484f8d958748d7a3ab0c97cff90c60b3ba215201a9",
+  "sample_count": 300,
+  "independent_groups": 150,
+  "cpu_tests_passed": 9,
+  "hypothesis_supported": false,
+  "claim": "RTN check validates the pipeline and separates content from order; it does not prove algorithmic rescue or INT4 deployment performance"
+}

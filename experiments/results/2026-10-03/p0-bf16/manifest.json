@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "mode": "bf16",
+  "controls": {
+    "dataset_sha256": "1ff03d8fef00c505af1719fa84d79b16f8df45f0796c3ece4a273cddeacf5896",
+    "split": "dev",
+    "processor_files": {
+      "chat_template.json": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce",
+      "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+      "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+      "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+      "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+      "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+      "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+    },
+    "min_pixels": 3136,
+    "max_pixels": 393216,
+    "use_fast": false,
+    "seed": 42,
+    "decode": {
+      "do_sample": false,
+      "max_new_tokens": 24,
+      "use_cache": true
+    }
+  },
+  "samples": 300,
+  "model_repository": "Qwen/Qwen3-VL-8B-Instruct",
+  "base_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "checkpoint_config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+  "retained_layers": [],
+  "fake_rtn_modules": [],
+  "group_size": 128,
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.3",
+    "llmcompressor": "0.9.0",
+    "compressed-tensors": "0.13.0",
+    "Pillow": "12.0.0",
+    "accelerate": "1.12.0"
+  },
+  "python": "3.12.14",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "cuda": "12.8",
+  "load_seconds": 198.86240630224347,
+  "inference_seconds": 50.93139907717705,
+  "generation_p50_ms": 163.18335011601448,
+  "generation_p95_ms": 199.06410202383995,
+  "peak_torch_allocated_bytes": 20509668864,
+  "peak_torch_reserved_bytes": 20933771264,
+  "weight_file_bytes": 17534339512,
+  "task_em": {
+    "numeric_ocr": 1.0,
+    "identifier_ocr": 1.0,
+    "graph_edge": 0.41
+  },
+  "predictions_sha256": "351171f04137de4d8a15a2db02dee2d007747f205c2915b7a67e9bfb054ef220",
+  "script_sha256": "2edbfe73d0683be196e67a9ea95364f685aca4c44f4ea2b7697fd367213d0801",
+  "recorded_at": "2026-10-03T06:51:52.620692+00:00",
+  "performance_scope": "batch=1 HF generation only; excludes image preparation, fingerprinting and service queuing; dense execution is not an INT4 kernel benchmark"
+}

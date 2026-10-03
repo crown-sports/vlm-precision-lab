@@ -1,0 +1,106 @@
+{
+  "_id": "62d73facacc7c69fbea6bb42",
+  "id": "naver-clova-ix/cord-v2",
+  "author": "naver-clova-ix",
+  "sha": "7f0115a4b758a71d6473b8d085751692da2fef98",
+  "lastModified": "2022-07-19T23:43:33.000Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "license:cc-by-4.0",
+    "size_categories:1K<n<10K",
+    "format:parquet",
+    "modality:image",
+    "modality:text",
+    "library:datasets",
+    "library:dask",
+    "library:mlcroissant",
+    "library:polars",
+    "region:us"
+  ],
+  "downloads": 8769,
+  "likes": 129,
+  "cardData": {
+    "license": "cc-by-4.0"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "89fd3aa9612fb83a45aee3264b204d41230a6397",
+      "size": 1737
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "b187bb7e7d837a367ccd0862441947ad412c77f7",
+      "size": 27
+    },
+    {
+      "rfilename": "data/test-00000-of-00001-9c204eb3f4e11791.parquet",
+      "blobId": "a674a6aef479b0c87cbfe428baa603cfc2901391",
+      "size": 234202795,
+      "lfs": {
+        "sha256": "51c65f1788faff392abe2a0b55b023eb23e9be551c509138eaa3a832514224e7",
+        "size": 234202795,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "data/train-00000-of-00004-b4aaeceff1d90ecb.parquet",
+      "blobId": "6388701a7274587219ca7ff2dd313eb1257fd1c3",
+      "size": 490224630,
+      "lfs": {
+        "sha256": "da3994eee1bf9bd3c57f0d53a72c3a6812c8696c5ba26245987949ddf73483cc",
+        "size": 490224630,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "data/train-00001-of-00004-7dbbe248962764c5.parquet",
+      "blobId": "78bd10454ee33f3640b1c61717de75051c1cc359",
+      "size": 441418432,
+      "lfs": {
+        "sha256": "cce4def16a0d6a6c75f80be712f7494c56c318a8829b712f5c62650155c9e58e",
+        "size": 441418432,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "data/train-00002-of-00004-688fe1305a55e5cc.parquet",
+      "blobId": "b42763d31932309c8811db8b2f3935f452a3beed",
+      "size": 443802181,
+      "lfs": {
+        "sha256": "591e2db8fe8b1d364b054f46e8c375b7f00e72578914ba46a573b6858162cab2",
+        "size": 443802181,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "data/train-00003-of-00004-2d0cd200555ed7fd.parquet",
+      "blobId": "469363bd9de1310012e20b74ebadaeed2602b3bd",
+      "size": 455555434,
+      "lfs": {
+        "sha256": "1ffd9de8d6fbcee7630fd4cdfedff05b9b7fabc0fae4fc17557c5fe7cf178748",
+        "size": 455555434,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "data/validation-00000-of-00001-cc3c5779fe22e8ca.parquet",
+      "blobId": "dcc838661ffafc4c647b8c7c751f934f971a4944",
+      "size": 242080800,
+      "lfs": {
+        "sha256": "0d0f6dac11fdcc549de2746aa9f53136a3bc22a2a1aff2b0b847f7622ad60c15",
+        "size": 242080800,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "dataset_infos.json",
+      "blobId": "b7d7e2e9aca5de87b301342d2708bf55f40eebb1",
+      "size": 1048
+    }
+  ],
+  "createdAt": "2022-07-19T23:35:08.000Z",
+  "usedStorage": 15042629830
+}
