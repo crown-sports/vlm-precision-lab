@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="查看 Qwen3-VL 量化前后的原图、真实回答，以及内容和格式评分的区别。300 条公开实验记录，无需 API。">
+<title>VLM Precision Lab · 实验回放</title>
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f7f8fa,#14181e);--surface:light-dark(#fff,#1e242d);--ink:light-dark(#1b2936,#e9edf4);--muted:light-dark(#546578,#a6b3c4);--line:light-dark(#dce3e9,#394452);--accent:light-dark(#205e92,#8fc7f6);--soft:light-dark(#eaf2f8,#233b50);--good:light-dark(#216546,#99d4ad);--good-bg:light-dark(#eef7f1,#223e2b);--warn:light-dark(#80541b,#f3cb86);--warn-bg:light-dark(#fff6e6,#473820);--bad:light-dark(#9f3741,#f2a1aa);--bad-bg:light-dark(#fff0f1,#44282e)}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif}
+a{color:var(--accent);text-underline-offset:3px}
+button,select{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default;opacity:.45}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+main{max-width:1120px;margin:auto;padding:24px 28px 48px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px}
+.brand{font-weight:650;letter-spacing:.4px}
+.replay{font-weight:400;color:var(--muted);margin-left:10px}
+.topbar nav{display:flex;gap:18px}
+h1{font-size:32px;line-height:1.25;letter-spacing:-.5px;margin:30px 0 10px}
+h2{font-size:18px;margin:0 0 14px}
+.intro{color:var(--muted);margin:0 0 24px}
+.controls{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.control{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted)}
+select{min-width:150px;padding:9px 32px 9px 12px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink)}
+.score-buttons{display:flex;gap:0;flex-wrap:wrap}
+.score-buttons button{border:1px solid var(--line);padding:9px 14px;background:var(--surface);color:var(--muted)}
+.score-buttons button:first-child{border-radius:7px 0 0 7px}
+.score-buttons button:last-child{border-radius:0 7px 7px 0;border-left:0}
+.score-buttons [aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.scoreboard{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:16px 0;margin-top:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scoreboard .result{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.scoreboard .label{font-size:12px;color:var(--muted);display:block}
+.pair-arrow{color:var(--muted)}
+.score-note{font-size:13px;color:var(--muted);flex:1;min-width:180px}
+.workspace{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;margin-top:22px}
+.image-panel{margin:0;min-width:0}
+.image-panel img{display:block;width:100%;height:auto;aspect-ratio:768/512;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:8px}
+.image-panel figcaption{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-top:10px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+.case-id{font-size:11px}
+.case-controls{display:flex;gap:8px;align-items:center}
+.case-controls button{border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);padding:5px 12px}
+.answers{min-width:0}
+.question-label{color:var(--muted);font-size:12px}
+.question{margin:3px 0 10px;font-size:17px;font-weight:550}
+.expected{display:flex;gap:10px;align-items:baseline;margin-bottom:16px;font-size:13px;color:var(--muted)}
+.expected code{font-size:21px;color:var(--ink)}
+.answer-row{padding:13px 16px;border:1px solid var(--line);background:var(--surface);border-radius:8px;margin-bottom:10px}
+.answer-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.answer-text{font:24px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;margin:7px 0 3px;white-space:pre-wrap;overflow-wrap:anywhere}
+.status{display:inline-flex;align-items:center;gap:5px;padding:2px 7px;border-radius:4px;font-size:12px;white-space:nowrap}
+.status.good{color:var(--good);background:var(--good-bg)}
+.status.warn{color:var(--warn);background:var(--warn-bg)}
+.status.bad{color:var(--bad);background:var(--bad-bg)}
+.interpretation{font-size:13px;min-height:42px;margin:12px 0 0;color:var(--muted)}
+.shortcuts{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 10px}
+.shortcuts button{padding:7px 11px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font-size:12px}
+.shortcuts button[aria-pressed="true"]{border-color:var(--accent);background:var(--soft);color:var(--accent)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:12px 0 24px}
+.resources{padding-top:22px;border-top:1px solid var(--line)}
+.resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.measure{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.measure strong{font-size:22px;color:var(--ink);font-weight:550;font-variant-numeric:tabular-nums}
+.resource-note{font-size:12px;color:var(--muted);margin:10px 0 0}
+.evidence{margin-top:26px;font-size:12px;color:var(--muted)}
+.evidence summary{cursor:pointer;color:var(--accent);padding:6px 0}
+.evidence dl{display:grid;grid-template-columns:110px 1fr;gap:8px;margin:14px 0}
+.evidence dt,.evidence dd{margin:0}
+.evidence code{font-size:11px}
+.evidence .links{display:flex;gap:16px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);margin-top:24px;padding-top:16px;color:var(--muted);font-size:12px}
+.empty{display:none}
+.empty.visible{display:block;padding:30px;background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-top:22px}
+noscript p{padding:20px;border:1px solid var(--line)}
+
+@media(max-width:720px){main{padding:18px 16px 32px}
+h1{font-size:25px;margin-top:26px}
+.workspace{grid-template-columns:1fr;gap:18px}
+.controls{gap:14px}
+.control{width:100%}
+.score-buttons button{flex:1}
+.scoreboard{gap:14px}
+.score-note{flex-basis:100%}
+.topbar nav{gap:12px}
+.replay{display:block;margin:0}
+.resource-grid{grid-template-columns:1fr;gap:18px}
+.answer-text{font-size:22px}
+.image-panel figcaption{row-gap:12px}
+.case-controls{margin-left:auto}
+.evidence dl{grid-template-columns:1fr;gap:4px}
+.evidence dd{margin-bottom:8px}
+}
+
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="topbar"><div class="brand">VLM Precision Lab<span class="replay">实验回放 · 2026-10-03</span></div><nav aria-label="项目链接"><a href="https://github.com/chrischen-coder/vlm-precision-lab/blob/main/README.zh-CN.md">项目说明</a><a href="https://github.com/chrischen-coder/vlm-precision-lab">GitHub ↗</a></nav></div>
+  <h1>变的是答案，还是输出顺序？</h1>
+  <p class="intro">Qwen3-VL-8B · BF16 与 AWQ W4A16 重载对照。查看原图、真实回答和两种评分。</p>
+</header>
+<noscript><p>本页需要 JavaScript 显示已保存的记录。原始预测和评分也可在 GitHub 实验目录中查看。</p></noscript>
+<section aria-label="选择任务与评分">
+  <div class="controls">
+    <label class="control">查看任务<select id="task"><option value="graph_edge">图关系 · 100 条</option><option value="numeric_ocr">数字字段 · 100 条</option><option value="identifier_ocr">接口标识 · 100 条</option><option value="all">全部任务 · 300 条</option></select></label>
+    <div class="control"><span>评分方式</span><div class="score-buttons" role="group" aria-label="评分方式"><button type="button" data-metric="strict" aria-pressed="true">严格匹配</button><button type="button" data-metric="content" aria-pressed="false">内容正确</button></div></div>
+  </div>
+  <div class="scoreboard" aria-live="polite" aria-atomic="true">
+    <div><span class="label">BF16</span><span class="result" id="score-reference"></span></div><span class="pair-arrow" aria-hidden="true">→</span><div><span class="label">AWQ</span><span class="result" id="score-candidate"></span></div>
+    <div class="score-note" id="score-note"></div>
+  </div>
+</section>
+<div class="shortcuts" role="group" aria-label="按案例类型查看">
+  <button type="button" data-category="all" aria-pressed="true">全部样例</button>
+  <button type="button" data-category="order" aria-pressed="false">严格退化，内容没错</button>
+  <button type="button" data-category="recovery" aria-pressed="false">内容恢复</button>
+  <button type="button" data-category="wrong" aria-pressed="false">两者都答错</button>
+</div>
+<p class="empty" id="empty" role="status">这个任务没有符合该类型的记录。选择“全部样例”可继续查看。</p>
+<section class="workspace" id="workspace" aria-label="选中案例">
+  <figure class="image-panel"><img id="case-image" alt="" width="768" height="512"><figcaption><span><span id="case-position"></span> · 合成开发样例<br><code class="case-id" id="case-id"></code></span><div class="case-controls"><button type="button" id="previous" aria-label="上一条样例">← 上一条</button><button type="button" id="next" aria-label="下一条样例">下一条 →</button></div></figcaption></figure>
+  <div class="answers"><div class="question-label">问题</div><p class="question" id="question"></p><div class="expected">标准答案 <code id="expected"></code></div>
+    <div class="answer-row"><div class="answer-heading">BF16 <span class="status" id="reference-status"></span></div><pre class="answer-text" id="reference-answer"></pre></div>
+    <div class="answer-row"><div class="answer-heading">AWQ W4A16 · HF 重载 <span class="status" id="candidate-status"></span></div><pre class="answer-text" id="candidate-answer"></pre></div>
+    <p class="interpretation" id="interpretation" aria-live="polite"></p>
+  </div>
+</section>
+<div class="legend" aria-label="评分图例"><span>✓ 符合当前评分</span><span>△ 内容正确，但格式不符</span><span>× 内容错误</span></div>
+<section class="resources" aria-label="文件与运行内存">
+  <h2>文件变小，运行内存也会变小吗？</h2>
+  <div class="resource-grid"><div><div class="measure">权重文件 <strong id="weight-change"></strong><span>GB</span></div><p class="resource-note" id="weight-note"></p></div><div><div class="measure">峰值 Torch allocated <strong id="memory-change"></strong><span>GiB</span></div><p class="resource-note">HF 检查路径的内存增加。文件大小不能代替运行内存。</p></div></div>
+  <p class="resource-note">质量检查使用 batch=1，未测优化 INT4 服务引擎。全部记录来自合成开发数据；没有运行真实文档测试。</p>
+</section>
+<details class="evidence"><summary>查看原始问题、输入指纹与记录出处</summary><dl><dt>原始英文问题</dt><dd id="original-prompt"></dd><dt>样例 / 来源组</dt><dd><code id="source-group"></code></dd><dt>输入张量 SHA256</dt><dd><code id="input-hash"></code></dd><dt>原图 SHA256</dt><dd><code id="image-hash"></code></dd><dt>模型 revision</dt><dd><code id="model-revision"></code></dd></dl><div class="links"><a id="reference-link">BF16 原始预测</a><a id="candidate-link">AWQ 原始预测</a><a id="report-link">完整评分 JSON</a></div></details>
+<footer>这里回放的是已保存的模型输出，没有在线推理。共 300 条开发样例、150 个生成来源；每个来源有两条变体。</footer>
+</main>
+<script type="application/json" id="evidence-data">__RECORDED_EVIDENCE__</script>
+<script>
+(() => {
+  'use strict';
+  const data = JSON.parse(document.getElementById('evidence-data').textContent);
+  const $ = id => document.getElementById(id);
+  const state = {task:'graph_edge',metric:'strict',category:'all',id:'f65ff21481a45d46-0'};
+  const tasks = () => data.cases.filter(c => state.task === 'all' || c.task === state.task);
+  const matches = c => state.category === 'all' || (state.category === 'order' && c.reference_strict && !c.candidate_strict && c.candidate_content) || (state.category === 'recovery' && !c.reference_content && c.candidate_content) || (state.category === 'wrong' && !c.reference_content && !c.candidate_content);
+  const cases = () => tasks().filter(matches);
+  const text = (id,value) => { $(id).textContent=value; };
+  function question(c) {
+    if(c.task === 'graph_edge') {
+      const label=c.prompt.match(/labelled (L\d+)/);
+      return `标为 ${label ? label[1] : '指定标签'} 的线连接哪两个节点？请按字母顺序回答。`;
+    }
+    if(c.task === 'numeric_ocr') return '读取 Amount due 字段，保留正负号和两位小数。';
+    return '读取 Target interface 字段，保留连字符、前导零和完整标识。';
+  }
+  function status(c,stage) {
+    const el=$(stage+'-status');
+    if(c[stage+'_'+state.metric]) {el.className='status good';el.textContent='✓ 正确';}
+    else if(c[stage+'_content']) {el.className='status warn';el.textContent='△ 格式不符';}
+    else {el.className='status bad';el.textContent='× 内容错误';}
+  }
+  function render() {
+    const all=tasks(), visible=cases();
+    const total=all.length, a=all.filter(c=>c['reference_'+state.metric]).length, b=all.filter(c=>c['candidate_'+state.metric]).length;
+    const lost=all.filter(c=>c['reference_'+state.metric]&&!c['candidate_'+state.metric]).length;
+    const recovered=all.filter(c=>!c['reference_'+state.metric]&&c['candidate_'+state.metric]).length;
+    text('score-reference',`${a} / ${total}`);text('score-candidate',`${b} / ${total}`);
+    text('score-note',`所选任务全量统计：退化 ${lost} 条，恢复 ${recovered} 条。${state.metric==='strict'?'检查内容及要求的格式。':'图端点不计顺序；数字、标识仍严格匹配。'}`);
+    document.querySelectorAll('[data-metric]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.metric===state.metric)));
+    document.querySelectorAll('[data-category]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.category===state.category)));
+    $('workspace').hidden=!visible.length;$('empty').classList.toggle('visible',!visible.length);
+    $('previous').disabled=!visible.length;$('next').disabled=!visible.length;
+    if(!visible.length) {document.querySelector('.evidence').hidden=true;return;}
+    document.querySelector('.evidence').hidden=false;
+    let index=visible.findIndex(c=>c.id===state.id);if(index<0)index=0;
+    const c=visible[index];state.id=c.id;
+    $('case-image').src=c.image;$('case-image').alt=`原始${c.task==='graph_edge'?'拓扑图':'字段图片'}，样例 ${c.id}`;
+    text('case-position',`${index+1} / ${visible.length}`);text('case-id',c.id);text('question',question(c));text('expected',c.answer);
+    text('reference-answer',c.reference);text('candidate-answer',c.candidate);status(c,'reference');status(c,'candidate');
+    let explanation;
+    if(c.reference_strict&&!c.candidate_strict&&c.candidate_content) explanation=state.metric==='strict'?'AWQ 找对了端点，输出顺序不符合要求。切换“内容正确”可看到这项区别。':'两者端点都正确。内容评分通过，严格评分仍会记录 AWQ 的顺序错误。';
+    else if(!c.reference_content&&c.candidate_content) explanation='这一条 AWQ 找对了，BF16 没找对。单条恢复不能证明量化总体更好。';
+    else if(!c.reference_content&&!c.candidate_content) explanation='两个模型的内容都错了。排序答案无法修复错误的端点。';
+    else if(c.reference_content&&!c.candidate_content) explanation='原来正确的内容在 AWQ 重载后变错了，需要继续定位。';
+    else explanation='两者内容都正确。格式是否合规，由严格评分另行检查。';
+    text('interpretation',explanation);text('original-prompt',c.prompt);text('source-group',`${c.id} / ${c.group_id}`);text('input-hash',c.input_sha256);text('image-hash',c.image_sha256);
+    $('previous').disabled=index===0;$('next').disabled=index===visible.length-1;
+  }
+  $('task').addEventListener('change',e=>{state.task=e.target.value;render();});
+  document.querySelectorAll('[data-metric]').forEach(el=>el.addEventListener('click',()=>{state.metric=el.dataset.metric;render();}));
+  document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>{state.category=el.dataset.category;render();}));
+  function step(direction){const visible=cases();const i=visible.findIndex(c=>c.id===state.id);const target=visible[i+direction];if(target){state.id=target.id;render();}}
+  $('previous').addEventListener('click',()=>step(-1));$('next').addEventListener('click',()=>step(1));
+  const [before,after]=data.runs;
+  text('weight-change',`${(before.weight_file_bytes/1e9).toFixed(2)} → ${(after.weight_file_bytes/1e9).toFixed(2)}`);
+  text('weight-note',`十进制 GB，减少 ${((1-after.weight_file_bytes/before.weight_file_bytes)*100).toFixed(1)}%。视觉模块与 lm_head 保持 BF16。`);
+  text('memory-change',`${(before.peak_torch_allocated_bytes/2**30).toFixed(2)} → ${(after.peak_torch_allocated_bytes/2**30).toFixed(2)}`);
+  text('model-revision',data.base_revision);
+  const base=`https://github.com/chrischen-coder/vlm-precision-lab/blob/${data.evidence_commit}/experiments/results/2026-10-03/`;
+  $('reference-link').href=base+'p1-bf16/predictions.jsonl';$('candidate-link').href=base+'p1-awq-reload/predictions.jsonl';$('report-link').href=base+'p1-awq-report.json';
+  render();
+})();
+</script>
+</body>
+</html>

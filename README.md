@@ -1,169 +1,103 @@
 # VLM Precision Lab
 
-**Find which exact-reading tasks regress after multimodal quantization, then verify a deployable precision-retention recipe.**
+Compare a multimodal model before and after quantization, down to the image,
+answer and input tensor that produced each result.
 
-[中文详细设计](docs/design.zh-CN.md) · [实测结果](docs/experiments.zh-CN.md) · [Experiment protocol](docs/protocol.md) · [GPU scripts](experiments/)
+[中文](README.zh-CN.md) · [Live demo](https://chrischen-coder.github.io/vlm-precision-lab/) · [Design](docs/design.zh-CN.md) · [Experiment records](docs/experiments.zh-CN.md)
 
-Reading `-723.15` as `723.15`, truncating an interface id, or connecting the wrong
-nodes is a task failure even when the average benchmark score looks unchanged.
-This project compares the same image inputs, exposes losses and recoveries by
-task, and keeps calibration selection separate from method development and test
-data.
+## Start with an actual case
 
-Status: **P0 research prototype**. The original diagnostic dataset has 192
-calibration cases and 300 development cases. It is a synthetic pipeline check,
-not evidence of real-world generalization. The task-driven layer search and
-optimized engine deployment remain research work; no algorithm superiority,
-device-memory reduction, speedup or hiring outcome is claimed by the initial code.
+The image asks which nodes link **L6** connects. The expected answer is `B,D`.
+BF16 returned `B,D`; the exported AWQ model returned `D,B`.
 
-The formal AWQ export and independent HF reload now complete successfully:
-weight files are **17.53 GB → 7.22 GB (58.8% smaller)**. On the same 300 synthetic
-development inputs, numeric and identifier EM remain 100%, and unordered graph
-endpoints are 50% → 53%, with no observed content regressions. This validates
-file compression and this diagnostic quality check, not real-document quality.
-The HF check uses **more** Torch allocated memory and takes longer than BF16;
-optimized engine measurements remain a separate release gate.
+![Recorded image and model answers](docs/figures/recorded-case.png)
 
-![Quality after AWQ export and HF reload](docs/figures/p1-awq-metrics.png)
+The AWQ answer fails the requested alphabetical order but identifies the correct
+endpoints. Counting it as a recognition failure would send us looking for the
+wrong fix. The [demo](https://chrischen-coder.github.io/vlm-precision-lab/)
+lets you switch scoring rules and inspect **all 300 recorded cases**, including
+cases both models got wrong. It replays saved results; it does not run a model.
 
-The first 300-case BF16 / RTN check found **no content regression**: numeric and
-identifier reading were both 100%; unordered graph endpoints were 50% → 52%.
-Strict graph EM fell 41% → 32%, largely reflecting output order. This is not
-evidence for a perception-rescue algorithm. AWQ also shows no content regression
-on this set. Full records are in the [experiment log](docs/experiments.zh-CN.md).
+## Why this tool exists
 
-## Implemented
+A quantized model can lose some correct answers and recover others while its
+average score barely changes. For amounts, identifiers and graph relationships,
+those individual errors matter. Changes to image processing or decoding can also
+look like quantization damage.
 
-- Strict local dataset checks: source-group isolation, identical-image leakage,
-  safe image paths and image-content fingerprints.
-- Measured token-budget calibration selection: random, task-stratified and
-  weighted feature coverage, with per-source caps.
-- Paired exact-match regressions by task; gains and losses separately; source
-  cluster bootstrap intervals; graph content/format separation; escaped offline HTML.
-- Input tensor and decoding control checks. Changed inputs require an explicit
-  descriptive processor-control comparison.
-- Selection among fully measured recipes under file, task and optional p95
-  constraints; no feasible recipe returns no winner.
-- Qwen3-VL-8B BF16 / symmetric RTN fake-quant diagnostics, upstream AWQ W4A16
-  export and a separate HF reload check.
+Precision Lab joins paired predictions to their original images, checks the
+comparison controls, and reports losses and recoveries separately for each task.
+It distinguishes exact output compliance from unordered graph endpoint accuracy.
+Numbers retain their signs and decimal digits in both metrics.
 
-AWQ quantization, packing and model execution are upstream functionality.
-The feature selector is a transparent heuristic, and the recipe selector only
-ranks measured candidates. Neither is advertised as a new optimal quantizer.
+## Current result
 
-## Install and create a diagnostic dataset
+Qwen3-VL-8B-Instruct, decoder AWQ W4A16; vision modules and `lm_head` stay BF16.
+The 300 synthetic development cases come from 150 generated sources.
+
+| Measurement | BF16 | AWQ export + HF reload |
+| --- | ---: | ---: |
+| Weight files, decimal GB | 17.53 | 7.22 |
+| Numeric fields, exact match | 100/100 | 100/100 |
+| Identifiers, exact match | 100/100 | 100/100 |
+| Graph endpoints, unordered | 50/100 | 53/100 |
+| Graph answers, strict match | 41/100 | 33/100 |
+| Peak Torch allocated memory, GiB | 16.47 | 20.26 |
+
+Weight files shrank **58.8%**. This sample contains **zero content regressions**;
+all 11 strict regressions are graph answers that preserve the endpoints.
+It therefore gives us no reason to build a precision-rescue algorithm yet.
+
+The HF quality run used more memory and took longer after compression. It is not
+an optimized INT4 service benchmark. These generated images also do not establish
+quality on real documents. [Raw predictions, manifests and logs](experiments/results/2026-10-03/)
+and the [measurement details](docs/experiments.zh-CN.md) are included.
+
+## What works today
+
+- Dataset checks for source groups, duplicate-image leakage and image hashes.
+- Calibration selection under measured input-token costs: random, task-stratified
+  and weighted feature coverage, with a cap per source.
+- Paired task reports with original images, content/format scores and
+  source-group bootstrap intervals.
+- Input tensor, model revision, processor-setting and decoding checks.
+- AWQ export and an independent HF reload on RTX 5090.
+- Selection among already measured recipes using file size, task scores and an
+  optional p95 limit. No feasible recipe returns no winner.
+
+Layer intervention, task-driven precision search, real-document evaluation and
+optimized-engine benchmarks are the next work. AWQ itself is supplied by
+[LLM Compressor](https://github.com/vllm-project/llm-compressor).
+
+## Run locally
 
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install '.[test]'
 .venv/bin/pytest -q
-.venv/bin/precisionlab generate --output runs/diagnostic \
-  --font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf \
-  --calibration 192 --dev 300
+.venv/bin/precisionlab compare --dataset examples/diagnostic-v2/samples.jsonl \
+  --reference experiments/results/2026-10-03/p1-bf16/predictions.jsonl \
+  --candidate experiments/results/2026-10-03/p1-awq-reload/predictions.jsonl \
+  --output runs/awq-report.html
 ```
 
-Supply a font available on your system. The dataset records its font hash and
-seed. Different fonts generate different image bytes; use the published input
-bundle for exact reproduction of a recorded experiment. Fonts are not bundled.
+The report requires no GPU. To view the demo from a clone, open `demo/index.html`
+in a browser; its images use the adjacent recorded dataset. Rebuild it with
+`.venv/bin/python experiments/build_demo.py`.
 
-The exact [recorded input bundle](examples/diagnostic-v2/) and [raw predictions](experiments/results/2026-10-03/)
-are included. To reproduce the existing report without a GPU:
+[GPU setup, dataset generation and reproduction commands](docs/reproduce.md)
+are documented separately. Model weights and fonts are downloaded separately.
 
-```bash
-precisionlab compare --dataset examples/diagnostic-v2/samples.jsonl \
-  --reference experiments/results/2026-10-03/p0-bf16/predictions.jsonl \
-  --candidate experiments/results/2026-10-03/p0-fake-rtn/predictions.jsonl \
-  --output runs/reproduced-report.html
-```
+## The research question
 
-Every source has two answer-changing variants. Both stay in one split. The
-images contain no answer in their filenames. The first generated families use
-the same renderer across splits and therefore do not test unseen templates.
+If representative data exposes stable content regressions, can actual task
+errors select retained high-precision layers better than reconstruction error or
+budget-matched random retention? Each proposed recipe must be rebuilt from BF16,
+exported, reloaded and measured as a complete model.
 
-## GPU workflow
-
-Use a separate Linux Python 3.12 environment. Install CUDA 12.8 PyTorch before
-the remaining pinned requirements; the driver must support the GPU.
-
-```bash
-uv venv --python 3.12 .venv-gpu
-uv pip install --python .venv-gpu/bin/python torch==2.8.0 torchvision==0.23.0 \
-  --index-url https://download.pytorch.org/whl/cu128
-uv pip install --python .venv-gpu/bin/python -r experiments/requirements-gpu.txt
-uv pip install --python .venv-gpu/bin/python --no-deps .
-python3 experiments/download_model.py --output models/Qwen3-VL-8B-Instruct
-```
-
-Weights use the model author's license and are downloaded separately. The
-manifest pins the Hugging Face revision and checks the original LFS SHA256 or
-Git blob hashes, including when ModelScope is used as transport.
-
-```bash
-CUDA_VISIBLE_DEVICES=0 HF_HUB_OFFLINE=1 .venv-gpu/bin/python experiments/run_hf.py \
-  --model models/Qwen3-VL-8B-Instruct --dataset runs/diagnostic/samples.jsonl \
-  --mode bf16 --output runs/bf16
-HF_HUB_OFFLINE=1 .venv-gpu/bin/python experiments/run_hf.py \
-  --model models/Qwen3-VL-8B-Instruct --dataset runs/diagnostic/samples.jsonl \
-  --split calibration --mode costs --output runs/costs
-.venv-gpu/bin/precisionlab select --dataset runs/diagnostic/samples.jsonl \
-  --costs runs/costs/costs.json --budget 74000 --strategy stratified \
-  --output runs/calibration.jsonl
-CUDA_VISIBLE_DEVICES=0 HF_HUB_OFFLINE=1 .venv-gpu/bin/python experiments/quantize_awq.py \
-  --model models/Qwen3-VL-8B-Instruct --dataset runs/diagnostic/samples.jsonl \
-  --selected runs/calibration.jsonl --output models/awq-stratified \
-  --model-placement resident-gpu
-CUDA_VISIBLE_DEVICES=0 HF_HUB_OFFLINE=1 .venv-gpu/bin/python experiments/run_hf.py \
-  --model models/awq-stratified --dataset runs/diagnostic/samples.jsonl \
-  --mode reload-hf --output runs/awq-reload
-.venv-gpu/bin/precisionlab compare --dataset runs/diagnostic/samples.jsonl \
-  --reference runs/bf16/predictions.jsonl --candidate runs/awq-reload/predictions.jsonl \
-  --output runs/comparison.html
-```
-
-Use idle GPUs. Output directories are immutable: choose a new directory for a
-new run. HF reload can execute dequantized dense weights; this is a file-format
-and quality check, not evidence of INT4 inference acceleration. Memory, latency,
-power and service throughput require separate controlled backend measurements.
-
-The pinned 0.9 stack normally offloads BF16 weights to CPU. A container CPU
-limit of 16 GiB killed the recorded offload attempt, despite idle GPUs. The
-script's resident-GPU option bypasses the old dispatcher and postprocessing CPU
-relocation calls in its dedicated process. For a second activation-cache GPU, use `CUDA_VISIBLE_DEVICES=0,1`
-and `--activation-cache-device cuda:1`. This changes calibration placement, not
-AWQ arithmetic; sufficient GPU memory is required. The Qwen position-embedding
-compatibility fix is credited to upstream in `NOTICE`.
-
-## Research contribution to test
-
-Can task-specific counterfactuals and measured regressions select precision
-retention more effectively than reconstruction error or random retention, under
-the **same actual resource budget and supported backend constraints**?
-
-The intended sequence is:
-
-1. Verify a stable critical-task regression against BF16.
-2. Compare calibration strategies at matched costs.
-3. Nominate retained layers using measured interventions on development data.
-4. Rebuild AWQ candidates from BF16, export and reload the complete model.
-5. Compare feasible candidates, then freeze and evaluate independent test data.
-
-Single-layer scores are not assumed additive. Restoring unscaled BF16 weights
-into AWQ-transformed layers is invalid; retained-layer AWQ recipes are rebuilt
-from the original model. If the hypothesis fails, keep the simpler baseline and
-publish the negative result.
-
-Related work already includes [AutoRound AutoScheme](https://github.com/intel/auto-round/blob/main/docs/step_by_step.md)
-and [MBQ](https://github.com/thu-nics/MBQ). The project does not claim to invent
-mixed precision or modality sensitivity. See the Chinese design for contribution
-boundaries, strong baselines, release gates and the planned second-model study.
-
-## Limitations
-
-Initial exact-match tasks use Latin letters and numerical fields in generated
-static images. Chinese documents, public real data, multiple images and video
-are not yet evaluated. CPU tests verify evidence handling, not model quality.
-Three hundred development cases cannot establish a 1–2 pp noninferiority claim.
-There is no custom CUDA kernel, pruning, distillation or NPU deployment result
-in this initial version.
+[AutoRound](https://github.com/intel/auto-round) and
+[MBQ](https://github.com/thu-nics/MBQ) already address precision allocation and
+multimodal quantization. Our [design](docs/design.zh-CN.md) sets out the comparisons
+needed to establish an improvement over existing methods.
 
 Apache-2.0. Model weights and source datasets retain their own licenses.
