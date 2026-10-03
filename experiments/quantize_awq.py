@@ -8,6 +8,7 @@ import argparse
 from datetime import datetime, timezone
 import faulthandler
 import importlib.metadata
+import importlib
 import json
 from pathlib import Path
 import resource
@@ -21,6 +22,8 @@ from llmcompressor.modifiers.awq import AWQModifier
 import torch
 from transformers import AutoProcessor, Qwen3VLForConditionalGeneration
 import llmcompressor.pipelines.sequential.pipeline as sequential_pipeline
+datafree_pipeline = importlib.import_module("llmcompressor.pipelines.data_free.pipeline")
+entrypoint_utils = importlib.import_module("llmcompressor.entrypoints.utils")
 
 from precisionlab.data import fingerprint, load_samples, read_jsonl, sha256
 from run_hf import prepare, tensor_fingerprint
@@ -93,15 +96,19 @@ def main():
 
     started = time.monotonic()
     print(json.dumps({"stage": "calibrating", "cpu_max_rss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}), flush=True)
-    # Version 0.9's dispatcher unconditionally moves weights to CPU. In a
-    # dedicated resident-GPU process, bypass only that dispatch step; tracing,
+    # Version 0.9's dispatch cleanup moves weights to CPU even after calibration.
+    # In a dedicated resident-GPU process, bypass those placement steps; tracing,
     # calibration and AWQ arithmetic remain upstream. Restore the function even
     # on failure. This is a pinned-stack memory workaround, not a new quantizer.
     original_dispatch = sequential_pipeline.dispatch_for_sequential
+    original_datafree_dispatch = datafree_pipeline.dispatch_for_generation
+    original_cleanup = entrypoint_utils.remove_dispatch
     if a.model_placement == "resident-gpu":
         if any(t.device.type != "cuda" for t in model.parameters()):
             raise ValueError("Resident-GPU calibration requires all parameters on GPU")
         sequential_pipeline.dispatch_for_sequential = lambda module: module
+        datafree_pipeline.dispatch_for_generation = lambda module: module
+        entrypoint_utils.remove_dispatch = lambda module: module
     try:
         oneshot(model=model, tokenizer=processor.tokenizer, dataset=dataset, recipe=recipe,
             max_seq_length=max_length, num_calibration_samples=len(selected), data_collator=collator,
@@ -109,6 +116,10 @@ def main():
             sequential_offload_device=a.activation_cache_device)
     finally:
         sequential_pipeline.dispatch_for_sequential = original_dispatch
+        datafree_pipeline.dispatch_for_generation = original_datafree_dispatch
+        entrypoint_utils.remove_dispatch = original_cleanup
+    del dataset
+    print(json.dumps({"stage": "saving_compressed", "cpu_max_rss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}), flush=True)
     a.output.mkdir(parents=True)
     model.save_pretrained(a.output, save_compressed=True)
     processor.save_pretrained(a.output)

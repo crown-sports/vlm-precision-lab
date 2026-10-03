@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/proj/vlm-precision-lab/.venv-gpu/bin/python",
+    "-u",
+    "experiments/run_hf.py",
+    "--model",
+    "models/Qwen3-VL-8B-Instruct",
+    "--dataset",
+    "runs/diagnostic-v2/samples.jsonl",
+    "--mode",
+    "bf16",
+    "--output",
+    "runs/p1-bf16"
+  ],
+  "exit_code": 0,
+  "seconds": 223.972216963768,
+  "finished_at": "2026-10-03T08:07:46.055654+00:00",
+  "state": "success"
+}

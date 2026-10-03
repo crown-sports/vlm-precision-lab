@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/proj/vlm-precision-lab/.venv-gpu/bin/python",
+    "-u",
+    "experiments/run_hf.py",
+    "--model",
+    "models/awq-stratified",
+    "--dataset",
+    "runs/diagnostic-v2/samples.jsonl",
+    "--mode",
+    "reload-hf",
+    "--output",
+    "runs/p1-awq-reload"
+  ],
+  "exit_code": 0,
+  "seconds": 326.9412494637072,
+  "finished_at": "2026-10-03T08:18:07.460168+00:00",
+  "state": "success"
+}

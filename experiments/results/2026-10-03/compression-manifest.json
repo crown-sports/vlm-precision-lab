@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "method": "upstream AWQ W4A16",
+  "llmcompressor": "0.9.0",
+  "upstream_example": "https://github.com/vllm-project/llm-compressor/blob/main/examples/multimodal_vision/qwen3_vl_example.py",
+  "base_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "calibration_dataset_sha256": "06662e9c872e388954ffc20a7dbd2ed243e91d50e60978ff6b89662a3a0e0536",
+  "selected_file_sha256": "320f40404f80303c0bc95c5bb53ba0abbd29f661825a52dc3c75d0ae3e1e53e7",
+  "samples": 177,
+  "calibration_input_tokens": 73986,
+  "max_sequence_length": 426,
+  "max_pixels": 393216,
+  "ignore": [
+    "re:.*lm_head",
+    "re:.*visual.*"
+  ],
+  "retained_layers": [],
+  "seconds": 445.9755420088768,
+  "weight_file_bytes": 7224284152,
+  "cpu_max_rss_kib": 14042872,
+  "calibration_tensors_verified": true,
+  "model_placement": "resident-gpu",
+  "activation_cache_device": "cuda:1",
+  "offload_workaround": "https://github.com/vllm-project/llm-compressor/pull/1958",
+  "offload_workaround_sha256": "470e3b4aeaac546ea76581b5ebec8893af529b7ce2b1e211553b6430d8868e00",
+  "script_sha256": "19cef93ec9801cf800596e9274ac1dfc271784529c4b84ce02a673f5416c3062",
+  "recorded_at": "2026-10-03T08:08:52.382541+00:00",
+  "export_verified": true,
+  "reload_verified": false,
+  "warning": "Export success does not verify reload quality, optimized kernels, device memory savings or latency"
+}

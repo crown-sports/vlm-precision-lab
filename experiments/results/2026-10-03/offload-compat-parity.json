@@ -1,0 +1,83 @@
+{
+  "scope": "normal-device interpolation arithmetic; not a standalone offload test",
+  "upstream_fix": "https://github.com/vllm-project/llm-compressor/pull/1958",
+  "transformers": "4.57.3",
+  "torch": "2.8.0+cu128",
+  "original_function_sha256": "61d301b0c88ebb06a6fd023eea0091919b5ef0e716d95739b5ec71c18955d96c",
+  "checks": [
+    {
+      "dtype": "torch.float32",
+      "grid": [
+        [
+          1,
+          4,
+          4
+        ]
+      ],
+      "output_shape": [
+        16,
+        8
+      ],
+      "identical": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "grid": [
+        [
+          1,
+          6,
+          4
+        ],
+        [
+          2,
+          4,
+          6
+        ]
+      ],
+      "output_shape": [
+        72,
+        8
+      ],
+      "identical": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "grid": [
+        [
+          1,
+          4,
+          4
+        ]
+      ],
+      "output_shape": [
+        16,
+        8
+      ],
+      "identical": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "grid": [
+        [
+          1,
+          6,
+          4
+        ],
+        [
+          2,
+          4,
+          6
+        ]
+      ],
+      "output_shape": [
+        72,
+        8
+      ],
+      "identical": true,
+      "max_abs_error": 0.0
+    }
+  ]
+}

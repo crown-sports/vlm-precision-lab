@@ -14,15 +14,23 @@ Status: **P0 research prototype**. The original diagnostic dataset has 192
 calibration cases and 300 development cases. It is a synthetic pipeline check,
 not evidence of real-world generalization. The task-driven layer search and
 optimized engine deployment remain research work; no algorithm superiority,
-memory reduction, speedup or hiring outcome is claimed by the initial code.
+device-memory reduction, speedup or hiring outcome is claimed by the initial code.
+
+The formal AWQ export and independent HF reload now complete successfully:
+weight files are **17.53 GB → 7.22 GB (58.8% smaller)**. On the same 300 synthetic
+development inputs, numeric and identifier EM remain 100%, and unordered graph
+endpoints are 50% → 53%, with no observed content regressions. This validates
+file compression and this diagnostic quality check, not real-document quality.
+The HF check uses **more** Torch allocated memory and takes longer than BF16;
+optimized engine measurements remain a separate release gate.
+
+![Quality after AWQ export and HF reload](docs/figures/p1-awq-metrics.png)
 
 The first 300-case BF16 / RTN check found **no content regression**: numeric and
 identifier reading were both 100%; unordered graph endpoints were 50% → 52%.
 Strict graph EM fell 41% → 32%, largely reflecting output order. This is not
-evidence for a perception-rescue algorithm. Full records and the calibrated AWQ
-follow-up are documented in the [experiment log](docs/experiments.zh-CN.md).
-
-![Measured content and format scores on the synthetic development set](docs/figures/p0-metrics.png)
+evidence for a perception-rescue algorithm. AWQ also shows no content regression
+on this set. Full records are in the [experiment log](docs/experiments.zh-CN.md).
 
 ## Implemented
 
@@ -119,8 +127,8 @@ power and service throughput require separate controlled backend measurements.
 
 The pinned 0.9 stack normally offloads BF16 weights to CPU. A container CPU
 limit of 16 GiB killed the recorded offload attempt, despite idle GPUs. The
-script's resident-GPU option skips only that old dispatch step in its dedicated
-process. For a second activation-cache GPU, use `CUDA_VISIBLE_DEVICES=0,1`
+script's resident-GPU option bypasses the old dispatcher and postprocessing CPU
+relocation calls in its dedicated process. For a second activation-cache GPU, use `CUDA_VISIBLE_DEVICES=0,1`
 and `--activation-cache-device cuda:1`. This changes calibration placement, not
 AWQ arithmetic; sufficient GPU memory is required. The Qwen position-embedding
 compatibility fix is credited to upstream in `NOTICE`.
