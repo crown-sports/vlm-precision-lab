@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="查看 Qwen3-VL 量化前后的原图、真实回答，以及内容和格式评分的区别。300 条公开实验记录，无需 API。">
+<meta name="description" content="用自己的图片评测量化模型的答案、失败请求和服务延迟。此页回放 300 条已保存的合成回归记录。">
 <title>VLM Precision Lab · 实验回放</title>
 <style>
 :root{color-scheme:light dark;--bg:light-dark(#f7f8fa,#14181e);--surface:light-dark(#fff,#1e242d);--ink:light-dark(#1b2936,#e9edf4);--muted:light-dark(#546578,#a6b3c4);--line:light-dark(#dce3e9,#394452);--accent:light-dark(#205e92,#8fc7f6);--soft:light-dark(#eaf2f8,#233b50);--good:light-dark(#216546,#99d4ad);--good-bg:light-dark(#eef7f1,#223e2b);--warn:light-dark(#80541b,#f3cb86);--warn-bg:light-dark(#fff6e6,#473820);--bad:light-dark(#9f3741,#f2a1aa);--bad-bg:light-dark(#fff0f1,#44282e)}
@@ -102,8 +102,8 @@ h1{font-size:25px;margin-top:26px}
 <main>
 <header>
   <div class="topbar"><div class="brand">VLM Precision Lab<span class="replay">实验回放 · 2026-10-03</span></div><nav aria-label="项目链接"><a href="https://github.com/chrischen-coder/vlm-precision-lab/blob/main/README.zh-CN.md">项目说明</a><a href="https://github.com/chrischen-coder/vlm-precision-lab">GitHub ↗</a></nav></div>
-  <h1>变的是答案，还是输出顺序？</h1>
-  <p class="intro">Qwen3-VL-8B · BF16 与 AWQ W4A16 重载对照。查看原图、真实回答和两种评分。</p>
+  <h1>量化发布前，先检查答案和服务成本</h1>
+  <p class="intro">用自己的图片运行 <code>evaluate → compare → gate</code>，按质量和延迟目标放行或拒绝。<a href="https://github.com/chrischen-coder/vlm-precision-lab/blob/main/docs/service-evaluation.md">使用步骤 ↗</a><br>下方是 Qwen3-VL-8B 的 300 条合成回归记录，回放已保存的答案；真实收据模型结果与 vLLM GPU 压测尚未完成。</p>
 </header>
 <noscript><p>本页需要 JavaScript 显示已保存的记录。原始预测和评分也可在 GitHub 实验目录中查看。</p></noscript>
 <section aria-label="选择任务与评分">

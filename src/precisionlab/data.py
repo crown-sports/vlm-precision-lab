@@ -77,6 +77,8 @@ def index_predictions(rows, samples):
             raise ValueError(f"Duplicate prediction id: {row['id']}")
         if not isinstance(row.get("prediction"), str) or not row.get("input_sha256"):
             raise ValueError("Predictions require text and an input fingerprint")
+        if row.get("input_fingerprint_scope", "tensor") not in {"tensor", "request"}:
+            raise ValueError("Input fingerprint scope must be tensor or request")
         result[row["id"]] = row
     expected = {r["id"] for r in samples}
     if result.keys() != expected:

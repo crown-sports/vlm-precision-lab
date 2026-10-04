@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install '.[test]'
+      - run: python -m pip install '.[test,data]'
       - run: python -m pytest -q
       - run: python experiments/build_demo.py --output runs/site/index.html --copy-images
       - uses: actions/configure-pages@v5

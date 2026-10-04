@@ -7,3 +7,8 @@ https://github.com/vllm-project/llm-compressor/pull/1958
 The quantization adapter uses LLM Compressor's AWQ example and public APIs.
 Quantization kernels, AWQ scaling, packing and execution remain upstream work.
 https://github.com/vllm-project/llm-compressor
+
+The optional receipt adapter reads NAVER CLOVA CORD-v2 annotations and images
+under CC-BY-4.0. No source images or parquet data are bundled with this code.
+https://github.com/clovaai/cord
+https://huggingface.co/datasets/naver-clova-ix/cord-v2

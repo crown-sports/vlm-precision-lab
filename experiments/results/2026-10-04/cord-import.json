@@ -1,0 +1,40 @@
+{
+  "state": "source_verified_and_imported",
+  "inference_performed": false,
+  "repository": "naver-clova-ix/cord-v2",
+  "revision": "7f0115a4b758a71d6473b8d085751692da2fef98",
+  "license": "CC-BY-4.0",
+  "source_files": [
+    {
+      "path": "data/validation-00000-of-00001-cc3c5779fe22e8ca.parquet",
+      "bytes": 242080800,
+      "sha256": "0d0f6dac11fdcc549de2746aa9f53136a3bc22a2a1aff2b0b847f7622ad60c15"
+    }
+  ],
+  "documents": {
+    "validation": 100
+  },
+  "samples": 273,
+  "source_groups": 100,
+  "task_counts": {
+    "receipt_cashprice": 64,
+    "receipt_changeprice": 64,
+    "receipt_tax_price": 47,
+    "receipt_total_price": 98
+  },
+  "skipped_fields": {
+    "sub_total.tax_price:missing-or-ambiguous": 53,
+    "total.changeprice:missing-or-ambiguous": 36,
+    "total.cashprice:missing-or-ambiguous": 36,
+    "total.total_price:missing-or-ambiguous": 2
+  },
+  "dataset_sha256": "beccbf2731b307c027e93eb4e59c7638907ff1f5907245f2d73fe1aa2f878e96",
+  "scoring": "literal field transcription; punctuation/currency differences count as errors, not proven numeric-content loss",
+  "packages": {
+    "python": "3.12.12",
+    "pyarrow": "21.0.0",
+    "Pillow": "12.3.0"
+  },
+  "importer_sha256": "d344f76a75b2cf17dde85a67a45130b59d94c7dba50651375b5d776e291337bd",
+  "downloader_sha256": "7e4ee47594f66d245f660c5bbbc44492f1ce5abe477aa2b7959037e448112b32"
+}

@@ -23,16 +23,11 @@ def load_evidence(root=ROOT):
     samples = [s for s in load_samples(dataset) if s["split"] == "dev"]
     ref_rows, cand_rows = read_jsonl(reference), read_jsonl(candidate)
     ref, cand = index_predictions(ref_rows, samples), index_predictions(cand_rows, samples)
-    controls = validate_manifests(reference, candidate)
+    dataset_hash = fingerprint(samples, dataset)
+    controls = validate_manifests(reference, candidate, dataset_sha256=dataset_hash)
     if not controls["manifests_verified"]:
         raise ValueError("Replay requires both run manifests")
     manifests = [json.loads(p.with_name("manifest.json").read_text()) for p in (reference, candidate)]
-    dataset_hash = fingerprint(samples, dataset)
-    for path, manifest in zip((reference, candidate), manifests):
-        if manifest["predictions_sha256"] != sha256(path):
-            raise ValueError("Recorded predictions changed")
-        if manifest["controls"]["dataset_sha256"] != dataset_hash:
-            raise ValueError("Dataset no longer matches the recorded run")
     if manifests[0]["script_sha256"] != manifests[1]["script_sha256"]:
         raise ValueError("Replay expects the same inference script")
     recorded = json.loads((results / "p1-awq-report.json").read_text())

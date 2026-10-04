@@ -61,9 +61,14 @@ def compare(samples, reference, candidate, *, repetitions=2000, seed=42, allow_i
     if repetitions < 100:
         raise ValueError("Use at least 100 bootstrap repetitions")
     ref, cand = index_predictions(reference, samples), index_predictions(candidate, samples)
+    scopes = {p.get("input_fingerprint_scope", "tensor") for p in [*ref.values(), *cand.values()]}
+    if len(scopes) != 1:
+        raise ValueError("Cannot compare request fingerprints with actual input-tensor fingerprints")
+    scope = scopes.pop()
     changed = [s["id"] for s in samples if ref[s["id"]]["input_sha256"] != cand[s["id"]]["input_sha256"]]
     if changed and not allow_input_change:
-        raise ValueError(f"Input tensors changed for {len(changed)} samples; attribution requires a separate processor control")
+        kind = "tensors" if scope == "tensor" else "requests"
+        raise ValueError(f"Input {kind} changed for {len(changed)} samples; attribution requires a separate processor control")
     cases = [{"id": s["id"], "group_id": s["group_id"], "task": s["task"],
               "answer": s["answer"], "image": s["image"], "prompt": s["prompt"], "reference": ref[s["id"]]["prediction"],
               "candidate": cand[s["id"]]["prediction"],
@@ -88,5 +93,8 @@ def compare(samples, reference, candidate, *, repetitions=2000, seed=42, allow_i
             "graph_format_rates": format_rates,
             "semantic_failures": [r for r in semantic_cases if r["before"] and not r["after"]],
             "input_changes": changed,
-            "interpretation": "Input-change comparison is descriptive, not isolated quantization evidence" if changed else "Same input tensors; also check model, decoding and backend manifests",
+            "input_fingerprint_scope": scope,
+            "interpretation": "Input-change comparison is descriptive, not isolated quantization evidence" if changed else (
+                "Same client requests; server-side input tensors and model identity are not verified" if scope == "request"
+                else "Same input tensors; also check model, decoding and backend manifests"),
             "failures": [r for r in cases if r["before"] and not r["after"]]}
