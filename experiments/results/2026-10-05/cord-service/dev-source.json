@@ -1,0 +1,35 @@
+{
+  "repository": "naver-clova-ix/cord-v2",
+  "revision": "7f0115a4b758a71d6473b8d085751692da2fef98",
+  "license": "CC-BY-4.0",
+  "source_files": [
+    {
+      "rfilename": "data/validation-00000-of-00001-cc3c5779fe22e8ca.parquet",
+      "blobId": "dcc838661ffafc4c647b8c7c751f934f971a4944",
+      "size": 242080800,
+      "lfs": {
+        "sha256": "0d0f6dac11fdcc549de2746aa9f53136a3bc22a2a1aff2b0b847f7622ad60c15",
+        "size": 242080800,
+        "pointerSize": 134
+      }
+    }
+  ],
+  "documents": {
+    "validation": 100
+  },
+  "samples": 273,
+  "skipped_fields": {
+    "sub_total.tax_price:missing-or-ambiguous": 53,
+    "total.changeprice:missing-or-ambiguous": 36,
+    "total.cashprice:missing-or-ambiguous": 36,
+    "total.total_price:missing-or-ambiguous": 2
+  },
+  "fields": {
+    "total.total_price": "total amount",
+    "total.cashprice": "cash amount paid",
+    "total.changeprice": "change returned",
+    "sub_total.tax_price": "tax amount"
+  },
+  "dataset_sha256": "beccbf2731b307c027e93eb4e59c7638907ff1f5907245f2d73fe1aa2f878e96",
+  "scoring": "literal field transcription; punctuation/currency differences count as errors, not proven numeric-content loss"
+}

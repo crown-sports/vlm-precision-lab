@@ -93,6 +93,6 @@ def import_cord(parquet_dir, output, source_manifest, *, splits=("train", "valid
         "license": "CC-BY-4.0", "source_files": selected, "documents": dict(documents),
         "samples": len(rows), "skipped_fields": dict(skipped), "fields": FIELDS,
         "dataset_sha256": fingerprint(rows, output / "samples.jsonl"),
-        "scoring": "literal field transcription; punctuation/currency differences count as errors, not proven numeric-content loss"}
+        "scoring": "literal agreement with CORD parsed-field annotations; currency spacing can differ from print, so this is not guaranteed verbatim OCR or numeric-content loss"}
     (output / "source.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest

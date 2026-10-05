@@ -115,13 +115,23 @@ Missing or ambiguous fields are skipped and counted. Multiple fields from one
 receipt share a source group. Train maps to calibration, validation to dev, test
 to test; use `--splits train validation test` to import all downloaded sources.
 
-Scoring is literal agreement with the CORD field annotation. It is not monetary
-value equivalence or the official CORD parsing benchmark. Import is completed;
-model predictions on these receipts are not yet recorded.
+Scoring is literal agreement with the CORD parsed-field annotation. Currency
+spacing in the annotation can differ from the printed image, while the importer's
+prompt asks for printed text; literal annotation EM is therefore not guaranteed
+verbatim OCR accuracy. It is not monetary value equivalence or the official CORD
+parsing benchmark. The [completed GPU study](../experiments/results/2026-10-05/cord-service/)
+records 273 dev and 258 test questions, three timing repeats at concurrency 1 and 4,
+and quality gates that **fail** for both models. A post hoc `Rp`-spacing diagnostic
+is reported separately; default exact match and gates are unchanged.
 
 Source: [NAVER CLOVA CORD](https://github.com/clovaai/cord),
 [pinned CORD-v2 release](https://huggingface.co/datasets/naver-clova-ix/cord-v2/tree/7f0115a4b758a71d6473b8d085751692da2fef98), CC-BY-4.0.
-Full images and parquet files remain outside Git. [Verified import record](../experiments/results/2026-10-04/cord-import.json).
+Full image sets and parquet files remain outside Git. Five unmodified review
+images are bundled with source attribution. [Verified import record](../experiments/results/2026-10-04/cord-import.json).
+
+For the pinned service environment, checkpoint checks, immutable workload runner,
+NVML sampling and offline result verification, see the
+[real-receipt reproduction case](cord-study.zh-CN.md#复现).
 
 ## Reproducibility boundaries
 

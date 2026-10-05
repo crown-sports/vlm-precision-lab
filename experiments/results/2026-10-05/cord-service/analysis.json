@@ -1,0 +1,2953 @@
+{
+  "quality": {
+    "dev": {
+      "overall": {
+        "samples": 273,
+        "independent_groups": 100,
+        "reference_em": 0.8461538461538461,
+        "candidate_em": 0.8644688644688645,
+        "delta_pp": 1.831501831501836,
+        "delta_ci95_pp": [
+          -0.7518796992481203,
+          4.7272727272727275
+        ],
+        "regressions": 4,
+        "recoveries": 9,
+        "regression_rate_on_reference_correct": 0.017316017316017316,
+        "insufficient_groups": false
+      },
+      "tasks": {
+        "receipt_cashprice": {
+          "samples": 64,
+          "independent_groups": 64,
+          "reference_em": 0.84375,
+          "candidate_em": 0.890625,
+          "delta_pp": 4.6875,
+          "delta_ci95_pp": [
+            -1.5625,
+            10.9375
+          ],
+          "regressions": 1,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.018518518518518517,
+          "insufficient_groups": false
+        },
+        "receipt_changeprice": {
+          "samples": 64,
+          "independent_groups": 64,
+          "reference_em": 0.84375,
+          "candidate_em": 0.890625,
+          "delta_pp": 4.6875,
+          "delta_ci95_pp": [
+            0.0,
+            10.9375
+          ],
+          "regressions": 0,
+          "recoveries": 3,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_tax_price": {
+          "samples": 47,
+          "independent_groups": 47,
+          "reference_em": 0.6595744680851063,
+          "candidate_em": 0.6595744680851063,
+          "delta_pp": 0.0,
+          "delta_ci95_pp": [
+            -6.382978723404255,
+            6.382978723404255
+          ],
+          "regressions": 1,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.03225806451612903,
+          "insufficient_groups": false
+        },
+        "receipt_total_price": {
+          "samples": 98,
+          "independent_groups": 98,
+          "reference_em": 0.9387755102040817,
+          "candidate_em": 0.9285714285714286,
+          "delta_pp": -1.0204081632653073,
+          "delta_ci95_pp": [
+            -5.1020408163265305,
+            2.0408163265306123
+          ],
+          "regressions": 2,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.021739130434782608,
+          "insufficient_groups": false
+        }
+      },
+      "bootstrap": {
+        "unit": "source group",
+        "paired": true,
+        "repetitions": 10000,
+        "seed": 42
+      },
+      "semantic_tasks": {
+        "receipt_cashprice": {
+          "samples": 64,
+          "independent_groups": 64,
+          "reference_em": 0.84375,
+          "candidate_em": 0.890625,
+          "delta_pp": 4.6875,
+          "delta_ci95_pp": [
+            -1.5625,
+            10.9375
+          ],
+          "regressions": 1,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.018518518518518517,
+          "insufficient_groups": false
+        },
+        "receipt_changeprice": {
+          "samples": 64,
+          "independent_groups": 64,
+          "reference_em": 0.84375,
+          "candidate_em": 0.890625,
+          "delta_pp": 4.6875,
+          "delta_ci95_pp": [
+            0.0,
+            10.9375
+          ],
+          "regressions": 0,
+          "recoveries": 3,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_tax_price": {
+          "samples": 47,
+          "independent_groups": 47,
+          "reference_em": 0.6595744680851063,
+          "candidate_em": 0.6595744680851063,
+          "delta_pp": 0.0,
+          "delta_ci95_pp": [
+            -6.382978723404255,
+            6.382978723404255
+          ],
+          "regressions": 1,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.03225806451612903,
+          "insufficient_groups": false
+        },
+        "receipt_total_price": {
+          "samples": 98,
+          "independent_groups": 98,
+          "reference_em": 0.9387755102040817,
+          "candidate_em": 0.9285714285714286,
+          "delta_pp": -1.0204081632653073,
+          "delta_ci95_pp": [
+            -5.1020408163265305,
+            2.0408163265306123
+          ],
+          "regressions": 2,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.021739130434782608,
+          "insufficient_groups": false
+        }
+      },
+      "semantic_metric": "Unordered exact endpoints for graph_edge; literal exact match for reading tasks",
+      "graph_format_rates": {},
+      "semantic_failures": [
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:39:total.total_price",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:39",
+          "task": "receipt_total_price",
+          "answer": "97,900",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-39.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "97,900",
+          "candidate": "100,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:45:sub_total.tax_price",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:45",
+          "task": "receipt_tax_price",
+          "answer": "26,160",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-45.png",
+          "prompt": "Read this receipt. What is the tax amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "26,160",
+          "candidate": "21,600",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63:total.cashprice",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63",
+          "task": "receipt_cashprice",
+          "answer": "110,000",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-63.png",
+          "prompt": "Read this receipt. What is the cash amount paid? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "110,000",
+          "candidate": "TUNAI\n110,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:71:total.total_price",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:71",
+          "task": "receipt_total_price",
+          "answer": "20.000",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-71.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "20.000",
+          "candidate": "20,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        }
+      ],
+      "input_changes": [],
+      "input_fingerprint_scope": "request",
+      "interpretation": "Same client requests; server-side input tensors and model identity are not verified",
+      "failures": [
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:39:total.total_price",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:39",
+          "task": "receipt_total_price",
+          "answer": "97,900",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-39.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "97,900",
+          "candidate": "100,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:45:sub_total.tax_price",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:45",
+          "task": "receipt_tax_price",
+          "answer": "26,160",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-45.png",
+          "prompt": "Read this receipt. What is the tax amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "26,160",
+          "candidate": "21,600",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63:total.cashprice",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63",
+          "task": "receipt_cashprice",
+          "answer": "110,000",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-63.png",
+          "prompt": "Read this receipt. What is the cash amount paid? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "110,000",
+          "candidate": "TUNAI\n110,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:71:total.total_price",
+          "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:71",
+          "task": "receipt_total_price",
+          "answer": "20.000",
+          "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-71.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "20.000",
+          "candidate": "20,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        }
+      ],
+      "provenance": {
+        "manifests_verified": true,
+        "prediction_hashes_verified": true,
+        "base_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "input_fingerprint_scope": "request",
+        "server_identity_verified": false,
+        "processor_file_hashes_match": null,
+        "processor_settings_changed": [],
+        "reference_mode": "service",
+        "candidate_mode": "service"
+      },
+      "margin_check": {
+        "receipt_cashprice": {
+          "lower_bound_pp": -1.5625,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": true
+        },
+        "receipt_changeprice": {
+          "lower_bound_pp": 0.0,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": true
+        },
+        "receipt_tax_price": {
+          "lower_bound_pp": -6.382978723404255,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": false
+        },
+        "receipt_total_price": {
+          "lower_bound_pp": -5.1020408163265305,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": false
+        }
+      }
+    },
+    "test": {
+      "overall": {
+        "samples": 258,
+        "independent_groups": 99,
+        "reference_em": 0.7906976744186046,
+        "candidate_em": 0.8294573643410853,
+        "delta_pp": 3.875968992248069,
+        "delta_ci95_pp": [
+          1.1406844106463878,
+          7.003891050583658
+        ],
+        "regressions": 2,
+        "recoveries": 12,
+        "regression_rate_on_reference_correct": 0.00980392156862745,
+        "insufficient_groups": false
+      },
+      "tasks": {
+        "receipt_cashprice": {
+          "samples": 65,
+          "independent_groups": 65,
+          "reference_em": 0.7846153846153846,
+          "candidate_em": 0.8461538461538461,
+          "delta_pp": 6.153846153846154,
+          "delta_ci95_pp": [
+            1.5384615384615385,
+            12.307692307692308
+          ],
+          "regressions": 0,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_changeprice": {
+          "samples": 56,
+          "independent_groups": 56,
+          "reference_em": 0.7857142857142857,
+          "candidate_em": 0.8035714285714286,
+          "delta_pp": 1.7857142857142905,
+          "delta_ci95_pp": [
+            0.0,
+            5.357142857142857
+          ],
+          "regressions": 0,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_tax_price": {
+          "samples": 42,
+          "independent_groups": 42,
+          "reference_em": 0.7380952380952381,
+          "candidate_em": 0.8095238095238095,
+          "delta_pp": 7.14285714285714,
+          "delta_ci95_pp": [
+            0.0,
+            16.666666666666664
+          ],
+          "regressions": 0,
+          "recoveries": 3,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_total_price": {
+          "samples": 95,
+          "independent_groups": 95,
+          "reference_em": 0.8210526315789474,
+          "candidate_em": 0.8421052631578947,
+          "delta_pp": 2.1052631578947323,
+          "delta_ci95_pp": [
+            -3.1578947368421053,
+            7.368421052631578
+          ],
+          "regressions": 2,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.02564102564102564,
+          "insufficient_groups": false
+        }
+      },
+      "bootstrap": {
+        "unit": "source group",
+        "paired": true,
+        "repetitions": 10000,
+        "seed": 42
+      },
+      "semantic_tasks": {
+        "receipt_cashprice": {
+          "samples": 65,
+          "independent_groups": 65,
+          "reference_em": 0.7846153846153846,
+          "candidate_em": 0.8461538461538461,
+          "delta_pp": 6.153846153846154,
+          "delta_ci95_pp": [
+            1.5384615384615385,
+            12.307692307692308
+          ],
+          "regressions": 0,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_changeprice": {
+          "samples": 56,
+          "independent_groups": 56,
+          "reference_em": 0.7857142857142857,
+          "candidate_em": 0.8035714285714286,
+          "delta_pp": 1.7857142857142905,
+          "delta_ci95_pp": [
+            0.0,
+            5.357142857142857
+          ],
+          "regressions": 0,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_tax_price": {
+          "samples": 42,
+          "independent_groups": 42,
+          "reference_em": 0.7380952380952381,
+          "candidate_em": 0.8095238095238095,
+          "delta_pp": 7.14285714285714,
+          "delta_ci95_pp": [
+            0.0,
+            16.666666666666664
+          ],
+          "regressions": 0,
+          "recoveries": 3,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_total_price": {
+          "samples": 95,
+          "independent_groups": 95,
+          "reference_em": 0.8210526315789474,
+          "candidate_em": 0.8421052631578947,
+          "delta_pp": 2.1052631578947323,
+          "delta_ci95_pp": [
+            -3.1578947368421053,
+            7.368421052631578
+          ],
+          "regressions": 2,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.02564102564102564,
+          "insufficient_groups": false
+        }
+      },
+      "semantic_metric": "Unordered exact endpoints for graph_edge; literal exact match for reading tasks",
+      "graph_format_rates": {},
+      "semantic_failures": [
+        {
+          "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:20:total.total_price",
+          "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:20",
+          "task": "receipt_total_price",
+          "answer": "377,859",
+          "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-20.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "377,859",
+          "candidate": "377,059",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42:total.total_price",
+          "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42",
+          "task": "receipt_total_price",
+          "answer": "16,500",
+          "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-42.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "16,500",
+          "candidate": "50,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        }
+      ],
+      "input_changes": [],
+      "input_fingerprint_scope": "request",
+      "interpretation": "Same client requests; server-side input tensors and model identity are not verified",
+      "failures": [
+        {
+          "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:20:total.total_price",
+          "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:20",
+          "task": "receipt_total_price",
+          "answer": "377,859",
+          "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-20.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "377,859",
+          "candidate": "377,059",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        },
+        {
+          "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42:total.total_price",
+          "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42",
+          "task": "receipt_total_price",
+          "answer": "16,500",
+          "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-42.png",
+          "prompt": "Read this receipt. What is the total amount? Return only the amount exactly as printed, preserving currency text and punctuation. Do not explain.",
+          "reference": "16,500",
+          "candidate": "50,000",
+          "before": true,
+          "after": false,
+          "reference_content_correct": true,
+          "candidate_content_correct": false
+        }
+      ],
+      "provenance": {
+        "manifests_verified": true,
+        "prediction_hashes_verified": true,
+        "base_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "input_fingerprint_scope": "request",
+        "server_identity_verified": false,
+        "processor_file_hashes_match": null,
+        "processor_settings_changed": [],
+        "reference_mode": "service",
+        "candidate_mode": "service"
+      },
+      "margin_check": {
+        "receipt_cashprice": {
+          "lower_bound_pp": 1.5384615384615385,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": true
+        },
+        "receipt_changeprice": {
+          "lower_bound_pp": 0.0,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": true
+        },
+        "receipt_tax_price": {
+          "lower_bound_pp": 0.0,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": true
+        },
+        "receipt_total_price": {
+          "lower_bound_pp": -3.1578947368421053,
+          "target_min_delta_pp": -2,
+          "supported_at_observed_interval": false
+        }
+      }
+    }
+  },
+  "error_audit": {
+    "dev": {
+      "bf16": {
+        "counts": {
+          "same_signed_digit_string": 28,
+          "other_mismatch": 11,
+          "matches_another_labelled_field": 3
+        },
+        "cases": [
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:4:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:4",
+            "task": "receipt_changeprice",
+            "answer": ":9,000",
+            "prediction": "9,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-4.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:7:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:7",
+            "task": "receipt_tax_price",
+            "answer": "5,409",
+            "prediction": "0",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-7.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9",
+            "task": "receipt_total_price",
+            "answer": "20,000",
+            "prediction": "20.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-9.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9",
+            "task": "receipt_cashprice",
+            "answer": "20,000",
+            "prediction": "20.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-9.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:16:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:16",
+            "task": "receipt_cashprice",
+            "answer": "100,000",
+            "prediction": "20,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_total_price"
+            ],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-16.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:17:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:17",
+            "task": "receipt_changeprice",
+            "answer": "80.000",
+            "prediction": "80,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-17.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21",
+            "task": "receipt_total_price",
+            "answer": "Rp 224,908",
+            "prediction": "Rp224,908",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-21.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21",
+            "task": "receipt_tax_price",
+            "answer": "Rp 20,446",
+            "prediction": "Rp20,446",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-21.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:23:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:23",
+            "task": "receipt_tax_price",
+            "answer": "1,818",
+            "prediction": "1.818",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-23.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:25:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:25",
+            "task": "receipt_tax_price",
+            "answer": "18,900",
+            "prediction": "9,000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-25.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:33:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:33",
+            "task": "receipt_cashprice",
+            "answer": "7,500",
+            "prediction": "50,000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-33.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:34:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:34",
+            "task": "receipt_tax_price",
+            "answer": "25,758",
+            "prediction": "14,580",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-34.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:35:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:35",
+            "task": "receipt_tax_price",
+            "answer": "27,666",
+            "prediction": "15,660",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-35.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38",
+            "task": "receipt_cashprice",
+            "answer": "100,000",
+            "prediction": "20,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_total_price"
+            ],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-38.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38",
+            "task": "receipt_changeprice",
+            "answer": "80,000",
+            "prediction": "-80,000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-38.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:57:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:57",
+            "task": "receipt_tax_price",
+            "answer": "26,235",
+            "prediction": "14,850",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-57.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:58:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:58",
+            "task": "receipt_changeprice",
+            "answer": "0",
+            "prediction": "Rp 0",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-58.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:61:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:61",
+            "task": "receipt_total_price",
+            "answer": "8,250",
+            "prediction": "10,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_cashprice"
+            ],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-61.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:61:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:61",
+            "task": "receipt_changeprice",
+            "answer": "1,800",
+            "prediction": "1.800",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-61.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:62:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:62",
+            "task": "receipt_changeprice",
+            "answer": "38,000",
+            "prediction": "38,900",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-62.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63",
+            "task": "receipt_tax_price",
+            "answer": "5,164",
+            "prediction": "5.164",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-63.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:66:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:66",
+            "task": "receipt_cashprice",
+            "answer": "7,000",
+            "prediction": "·7,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-66.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:68:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:68",
+            "task": "receipt_cashprice",
+            "answer": "30,000",
+            "prediction": "·30,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-68.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:68:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:68",
+            "task": "receipt_changeprice",
+            "answer": "4,000",
+            "prediction": "· 4,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-68.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:70:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:70",
+            "task": "receipt_tax_price",
+            "answer": "11,073",
+            "prediction": "7,725",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-70.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:73:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:73",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "·50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-73.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:73:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:73",
+            "task": "receipt_changeprice",
+            "answer": "30,000",
+            "prediction": "·30,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-73.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:75:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:75",
+            "task": "receipt_tax_price",
+            "answer": "6,046",
+            "prediction": "6.046",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-75.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_total_price",
+            "answer": "Rp 58000.00",
+            "prediction": "Rp58000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_cashprice",
+            "answer": "Rp 100000.00",
+            "prediction": "Rp100000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_changeprice",
+            "answer": "Rp 42000.00",
+            "prediction": "Rp42000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_tax_price",
+            "answer": "Rp 5272.73",
+            "prediction": "Rp5272.73",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:78:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:78",
+            "task": "receipt_tax_price",
+            "answer": "16 170",
+            "prediction": "16.170",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-78.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:84:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:84",
+            "task": "receipt_total_price",
+            "answer": "52,000",
+            "prediction": "52.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-84.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:87:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:87",
+            "task": "receipt_tax_price",
+            "answer": "0",
+            "prediction": "25%",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-87.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91",
+            "task": "receipt_total_price",
+            "answer": "44,000",
+            "prediction": "Rp. 44,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-91.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91",
+            "task": "receipt_cashprice",
+            "answer": "Rp. 50,000",
+            "prediction": "Rp.50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-91.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91",
+            "task": "receipt_tax_price",
+            "answer": "4,000",
+            "prediction": "Rp. 4.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-91.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:93:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:93",
+            "task": "receipt_tax_price",
+            "answer": "15,636",
+            "prediction": "15,436",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-93.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "50.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-95.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95",
+            "task": "receipt_changeprice",
+            "answer": "20,000",
+            "prediction": "20.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-95.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95",
+            "task": "receipt_tax_price",
+            "answer": "2,700",
+            "prediction": "2.700",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-95.png"
+          }
+        ],
+        "scope": "String-based review clues only. Equal digits do not establish numeric equivalence (12.50 vs 1,250), and another-field matches do not prove the model's reasoning mechanism."
+      },
+      "awq": {
+        "counts": {
+          "same_signed_digit_string": 22,
+          "other_mismatch": 11,
+          "matches_another_labelled_field": 4
+        },
+        "cases": [
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:4:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:4",
+            "task": "receipt_changeprice",
+            "answer": ":9,000",
+            "prediction": "9,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-4.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:7:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:7",
+            "task": "receipt_tax_price",
+            "answer": "5,409",
+            "prediction": "0",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-7.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9",
+            "task": "receipt_total_price",
+            "answer": "20,000",
+            "prediction": "20.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-9.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:9",
+            "task": "receipt_cashprice",
+            "answer": "20,000",
+            "prediction": "20.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-9.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:16:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:16",
+            "task": "receipt_cashprice",
+            "answer": "100,000",
+            "prediction": "20,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_total_price"
+            ],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-16.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:17:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:17",
+            "task": "receipt_changeprice",
+            "answer": "80.000",
+            "prediction": "80,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-17.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21",
+            "task": "receipt_total_price",
+            "answer": "Rp 224,908",
+            "prediction": "Rp224,908",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-21.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:21",
+            "task": "receipt_tax_price",
+            "answer": "Rp 20,446",
+            "prediction": "Rp20,446",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-21.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:23:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:23",
+            "task": "receipt_tax_price",
+            "answer": "1,818",
+            "prediction": "1.818",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-23.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:25:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:25",
+            "task": "receipt_tax_price",
+            "answer": "18,900",
+            "prediction": "9,000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-25.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:34:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:34",
+            "task": "receipt_tax_price",
+            "answer": "25,758",
+            "prediction": "14,580",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-34.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:35:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:35",
+            "task": "receipt_tax_price",
+            "answer": "27,666",
+            "prediction": "15,660",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-35.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38",
+            "task": "receipt_cashprice",
+            "answer": "100,000",
+            "prediction": "20,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_total_price"
+            ],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-38.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:38",
+            "task": "receipt_changeprice",
+            "answer": "80,000",
+            "prediction": "-80,000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-38.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:39:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:39",
+            "task": "receipt_total_price",
+            "answer": "97,900",
+            "prediction": "100,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_cashprice"
+            ],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-39.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:45:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:45",
+            "task": "receipt_tax_price",
+            "answer": "26,160",
+            "prediction": "21,600",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-45.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:57:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:57",
+            "task": "receipt_tax_price",
+            "answer": "26,235",
+            "prediction": "14,850",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-57.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:58:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:58",
+            "task": "receipt_changeprice",
+            "answer": "0",
+            "prediction": "Rp 0",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-58.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:61:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:61",
+            "task": "receipt_total_price",
+            "answer": "8,250",
+            "prediction": "10,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_cashprice"
+            ],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-61.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:62:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:62",
+            "task": "receipt_changeprice",
+            "answer": "38,000",
+            "prediction": "38,900",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-62.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63",
+            "task": "receipt_cashprice",
+            "answer": "110,000",
+            "prediction": "TUNAI\n110,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-63.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:63",
+            "task": "receipt_tax_price",
+            "answer": "5,164",
+            "prediction": "5.164",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-63.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:68:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:68",
+            "task": "receipt_changeprice",
+            "answer": "4,000",
+            "prediction": "· 4,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-68.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:70:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:70",
+            "task": "receipt_tax_price",
+            "answer": "11,073",
+            "prediction": "7,725",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-70.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:71:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:71",
+            "task": "receipt_total_price",
+            "answer": "20.000",
+            "prediction": "20,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-71.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_total_price",
+            "answer": "Rp 58000.00",
+            "prediction": "Rp58000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_cashprice",
+            "answer": "Rp 100000.00",
+            "prediction": "Rp100000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:total.changeprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_changeprice",
+            "answer": "Rp 42000.00",
+            "prediction": "Rp42000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:77",
+            "task": "receipt_tax_price",
+            "answer": "Rp 5272.73",
+            "prediction": "Rp5272.73",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-77.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:78:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:78",
+            "task": "receipt_tax_price",
+            "answer": "16 170",
+            "prediction": "16.170",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-78.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:87:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:87",
+            "task": "receipt_tax_price",
+            "answer": "0",
+            "prediction": "25%",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-87.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91:total.total_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91",
+            "task": "receipt_total_price",
+            "answer": "44,000",
+            "prediction": "Rp.44,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-91.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91",
+            "task": "receipt_cashprice",
+            "answer": "Rp. 50,000",
+            "prediction": "Rp.50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-91.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:91",
+            "task": "receipt_tax_price",
+            "answer": "4,000",
+            "prediction": "Rp. 4,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-91.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:93:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:93",
+            "task": "receipt_tax_price",
+            "answer": "15,636",
+            "prediction": "15,436",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-93.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95:total.cashprice",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "50.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-95.png"
+          },
+          {
+            "id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95:sub_total.tax_price",
+            "group_id": "cord:validation-00000-of-00001-cc3c5779fe22e8ca.parquet:95",
+            "task": "receipt_tax_price",
+            "answer": "2,700",
+            "prediction": "2.700",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/validation-00000-of-00001-cc3c5779fe22e8ca.parquet-95.png"
+          }
+        ],
+        "scope": "String-based review clues only. Equal digits do not establish numeric equivalence (12.50 vs 1,250), and another-field matches do not prove the model's reasoning mechanism."
+      }
+    },
+    "test": {
+      "bf16": {
+        "counts": {
+          "same_signed_digit_string": 37,
+          "other_mismatch": 16,
+          "matches_another_labelled_field": 1
+        },
+        "cases": [
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2",
+            "task": "receipt_total_price",
+            "answer": "28,000",
+            "prediction": "28.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-2.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2",
+            "task": "receipt_cashprice",
+            "answer": "100,000",
+            "prediction": "100.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-2.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:4:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:4",
+            "task": "receipt_changeprice",
+            "answer": "25,400",
+            "prediction": "28,400",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-4.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7",
+            "task": "receipt_total_price",
+            "answer": "111,000",
+            "prediction": "Rp.111,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-7.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7",
+            "task": "receipt_cashprice",
+            "answer": "Rp. 111,000",
+            "prediction": "Rp.111,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-7.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13",
+            "task": "receipt_total_price",
+            "answer": "51.300",
+            "prediction": "51,300",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-13.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13",
+            "task": "receipt_tax_price",
+            "answer": "4.664",
+            "prediction": "4,66",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-13.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:14:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:14",
+            "task": "receipt_tax_price",
+            "answer": "25,585",
+            "prediction": "17,850",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-14.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:18:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:18",
+            "task": "receipt_total_price",
+            "answer": "156000",
+            "prediction": "Rp. 0",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_changeprice"
+            ],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-18.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21",
+            "task": "receipt_total_price",
+            "answer": "Rp 38.000",
+            "prediction": "Rp38.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-21.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21",
+            "task": "receipt_cashprice",
+            "answer": "Rp 50.000",
+            "prediction": "Rp50.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-21.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21",
+            "task": "receipt_changeprice",
+            "answer": "Rp 12.000",
+            "prediction": "Rp12.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-21.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:31:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:31",
+            "task": "receipt_tax_price",
+            "answer": "18,126",
+            "prediction": "10,260",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-31.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32",
+            "task": "receipt_total_price",
+            "answer": "24.000",
+            "prediction": "24.00",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-32.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32",
+            "task": "receipt_cashprice",
+            "answer": "50.000",
+            "prediction": "50.00",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-32.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32",
+            "task": "receipt_changeprice",
+            "answer": "26.000",
+            "prediction": "26.00",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-32.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:33:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:33",
+            "task": "receipt_tax_price",
+            "answer": "19,557",
+            "prediction": "11,070",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-33.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42",
+            "task": "receipt_tax_price",
+            "answer": "1,500",
+            "prediction": "1.500",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-42.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_total_price",
+            "answer": "Rp 165000.00",
+            "prediction": "Rp165000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_cashprice",
+            "answer": "Rp 200000.00",
+            "prediction": "Rp200000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_changeprice",
+            "answer": "Rp 35000.00",
+            "prediction": "Rp35000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_tax_price",
+            "answer": "Rp 15000.00",
+            "prediction": "Rp15000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:45:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:45",
+            "task": "receipt_total_price",
+            "answer": "88,000",
+            "prediction": "88.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [
+              "receipt_cashprice"
+            ],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-45.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:50:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:50",
+            "task": "receipt_changeprice",
+            "answer": "80,500",
+            "prediction": "60,500",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-50.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:52:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:52",
+            "task": "receipt_cashprice",
+            "answer": "100.000",
+            "prediction": "100.00",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-52.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56",
+            "task": "receipt_total_price",
+            "answer": "8,999",
+            "prediction": "·8,999",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-56.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56",
+            "task": "receipt_cashprice",
+            "answer": "10,000",
+            "prediction": "·10,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-56.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56",
+            "task": "receipt_changeprice",
+            "answer": "1,001",
+            "prediction": "·1,001",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-56.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56",
+            "task": "receipt_tax_price",
+            "answer": "818",
+            "prediction": "·818",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-56.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:57:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:57",
+            "task": "receipt_cashprice",
+            "answer": "42,000",
+            "prediction": "·42,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-57.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:58:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:58",
+            "task": "receipt_total_price",
+            "answer": "60,500",
+            "prediction": "40,500",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-58.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:61:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:61",
+            "task": "receipt_total_price",
+            "answer": "24,500",
+            "prediction": "24.500",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-61.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:62:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:62",
+            "task": "receipt_changeprice",
+            "answer": "2,000",
+            "prediction": "2.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-62.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66",
+            "task": "receipt_changeprice",
+            "answer": "10,000",
+            "prediction": "10.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-66.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66",
+            "task": "receipt_tax_price",
+            "answer": "3,636",
+            "prediction": "10.000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-66.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67",
+            "task": "receipt_total_price",
+            "answer": "9.500,00",
+            "prediction": "9,500,00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-67.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67",
+            "task": "receipt_cashprice",
+            "answer": "9.500,00",
+            "prediction": "9,500,00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-67.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:68:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:68",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "·50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-68.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:68:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:68",
+            "task": "receipt_changeprice",
+            "answer": "30,000",
+            "prediction": "·30,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-68.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:70:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:70",
+            "task": "receipt_total_price",
+            "answer": "1,565,938",
+            "prediction": "DU 1,565,938",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-70.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83",
+            "task": "receipt_total_price",
+            "answer": "23,000",
+            "prediction": "23.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-83.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83",
+            "task": "receipt_tax_price",
+            "answer": "2,091",
+            "prediction": "2.091",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-83.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89",
+            "task": "receipt_total_price",
+            "answer": "40,000",
+            "prediction": "40.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-89.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "Pay Cash 50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-89.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89",
+            "task": "receipt_changeprice",
+            "answer": "10,000",
+            "prediction": "10.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-89.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91",
+            "task": "receipt_cashprice",
+            "answer": "30.000",
+            "prediction": "-30.000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-91.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91",
+            "task": "receipt_changeprice",
+            "answer": "9.000",
+            "prediction": "-9.000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-91.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:92:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:92",
+            "task": "receipt_changeprice",
+            "answer": "10,000",
+            "prediction": "10.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-92.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:93:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:93",
+            "task": "receipt_tax_price",
+            "answer": "1,636",
+            "prediction": "1.636",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-93.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:95:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:95",
+            "task": "receipt_total_price",
+            "answer": "61,799",
+            "prediction": "62,000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-95.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:95:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:95",
+            "task": "receipt_tax_price",
+            "answer": "5,618",
+            "prediction": "5.618",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-95.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:96:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:96",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "Pay Cash 50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-96.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:99:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:99",
+            "task": "receipt_total_price",
+            "answer": "75,000",
+            "prediction": "75.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-99.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:99:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:99",
+            "task": "receipt_cashprice",
+            "answer": "0",
+            "prediction": "75.000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-99.png"
+          }
+        ],
+        "scope": "String-based review clues only. Equal digits do not establish numeric equivalence (12.50 vs 1,250), and another-field matches do not prove the model's reasoning mechanism."
+      },
+      "awq": {
+        "counts": {
+          "same_signed_digit_string": 27,
+          "other_mismatch": 13,
+          "matches_another_labelled_field": 4
+        },
+        "cases": [
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2",
+            "task": "receipt_total_price",
+            "answer": "28,000",
+            "prediction": "28.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-2.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:2",
+            "task": "receipt_cashprice",
+            "answer": "100,000",
+            "prediction": "100.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-2.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:4:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:4",
+            "task": "receipt_changeprice",
+            "answer": "25,400",
+            "prediction": "28,400",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-4.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7",
+            "task": "receipt_total_price",
+            "answer": "111,000",
+            "prediction": "Rp.111,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-7.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:7",
+            "task": "receipt_cashprice",
+            "answer": "Rp. 111,000",
+            "prediction": "Rp.111,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-7.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13",
+            "task": "receipt_total_price",
+            "answer": "51.300",
+            "prediction": "52.000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_cashprice"
+            ],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-13.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:13",
+            "task": "receipt_tax_price",
+            "answer": "4.664",
+            "prediction": "4,66",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-13.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:18:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:18",
+            "task": "receipt_total_price",
+            "answer": "156000",
+            "prediction": "Rp. 0",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_changeprice"
+            ],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-18.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:20:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:20",
+            "task": "receipt_total_price",
+            "answer": "377,859",
+            "prediction": "377,059",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-20.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21",
+            "task": "receipt_total_price",
+            "answer": "Rp 38.000",
+            "prediction": "Rp38.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-21.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21",
+            "task": "receipt_cashprice",
+            "answer": "Rp 50.000",
+            "prediction": "Rp50.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-21.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:21",
+            "task": "receipt_changeprice",
+            "answer": "Rp 12.000",
+            "prediction": "Rp12.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-21.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:31:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:31",
+            "task": "receipt_tax_price",
+            "answer": "18,126",
+            "prediction": "10,260",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-31.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32",
+            "task": "receipt_total_price",
+            "answer": "24.000",
+            "prediction": "24.00",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-32.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:32",
+            "task": "receipt_changeprice",
+            "answer": "26.000",
+            "prediction": "26.00",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-32.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:33:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:33",
+            "task": "receipt_tax_price",
+            "answer": "19,557",
+            "prediction": "11,070",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-33.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42",
+            "task": "receipt_total_price",
+            "answer": "16,500",
+            "prediction": "50,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_cashprice"
+            ],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-42.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:42",
+            "task": "receipt_tax_price",
+            "answer": "1,500",
+            "prediction": "1.500",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-42.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_total_price",
+            "answer": "Rp 165000.00",
+            "prediction": "Rp165000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_cashprice",
+            "answer": "Rp 200000.00",
+            "prediction": "Rp200000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_changeprice",
+            "answer": "Rp 35000.00",
+            "prediction": "Rp35000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:43",
+            "task": "receipt_tax_price",
+            "answer": "Rp 15000.00",
+            "prediction": "Rp15000.00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-43.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:45:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:45",
+            "task": "receipt_total_price",
+            "answer": "88,000",
+            "prediction": "88.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [
+              "receipt_cashprice"
+            ],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-45.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:50:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:50",
+            "task": "receipt_changeprice",
+            "answer": "80,500",
+            "prediction": "60,500",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-50.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56",
+            "task": "receipt_cashprice",
+            "answer": "10,000",
+            "prediction": "·10,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-56.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56",
+            "task": "receipt_changeprice",
+            "answer": "1,001",
+            "prediction": "·1,001",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-56.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:56",
+            "task": "receipt_tax_price",
+            "answer": "818",
+            "prediction": "·818",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-56.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:58:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:58",
+            "task": "receipt_total_price",
+            "answer": "60,500",
+            "prediction": "40,500",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-58.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:62:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:62",
+            "task": "receipt_changeprice",
+            "answer": "2,000",
+            "prediction": "2.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-62.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66",
+            "task": "receipt_changeprice",
+            "answer": "10,000",
+            "prediction": "10.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-66.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:66",
+            "task": "receipt_tax_price",
+            "answer": "3,636",
+            "prediction": "10.000Z",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-66.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67",
+            "task": "receipt_total_price",
+            "answer": "9.500,00",
+            "prediction": "9,500,00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-67.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:67",
+            "task": "receipt_cashprice",
+            "answer": "9.500,00",
+            "prediction": "9,500,00",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-67.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:70:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:70",
+            "task": "receipt_total_price",
+            "answer": "1,565,938",
+            "prediction": "DU 1,565,938",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-70.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83",
+            "task": "receipt_total_price",
+            "answer": "23,000",
+            "prediction": "23.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-83.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83:sub_total.tax_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:83",
+            "task": "receipt_tax_price",
+            "answer": "2,091",
+            "prediction": "2.091",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-83.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "Pay Cash 50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-89.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:89",
+            "task": "receipt_changeprice",
+            "answer": "10,000",
+            "prediction": "10.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-89.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91",
+            "task": "receipt_cashprice",
+            "answer": "30.000",
+            "prediction": "CASH -30.000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-91.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:91",
+            "task": "receipt_changeprice",
+            "answer": "9.000",
+            "prediction": "-9.000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-91.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:92:total.changeprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:92",
+            "task": "receipt_changeprice",
+            "answer": "10,000",
+            "prediction": "10.000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-92.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:95:total.total_price",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:95",
+            "task": "receipt_total_price",
+            "answer": "61,799",
+            "prediction": "62,000",
+            "clue": "other_mismatch",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-95.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:96:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:96",
+            "task": "receipt_cashprice",
+            "answer": "50,000",
+            "prediction": "Pay Cash 50,000",
+            "clue": "same_signed_digit_string",
+            "other_matching_fields": [],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-96.png"
+          },
+          {
+            "id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:99:total.cashprice",
+            "group_id": "cord:test-00000-of-00001-9c204eb3f4e11791.parquet:99",
+            "task": "receipt_cashprice",
+            "answer": "0",
+            "prediction": "75,000",
+            "clue": "matches_another_labelled_field",
+            "other_matching_fields": [
+              "receipt_total_price"
+            ],
+            "image": "images/test-00000-of-00001-9c204eb3f4e11791.parquet-99.png"
+          }
+        ],
+        "scope": "String-based review clues only. Equal digits do not establish numeric equivalence (12.50 vs 1,250), and another-field matches do not prove the model's reasoning mechanism."
+      }
+    }
+  },
+  "currency_spacing_diagnostic": {
+    "dev": {
+      "tasks": {
+        "receipt_cashprice": {
+          "samples": 64,
+          "independent_groups": 64,
+          "reference_em": 0.859375,
+          "candidate_em": 0.90625,
+          "delta_pp": 4.6875,
+          "delta_ci95_pp": [
+            -1.5625,
+            10.9375
+          ],
+          "regressions": 1,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.01818181818181818,
+          "insufficient_groups": false
+        },
+        "receipt_changeprice": {
+          "samples": 64,
+          "independent_groups": 64,
+          "reference_em": 0.859375,
+          "candidate_em": 0.90625,
+          "delta_pp": 4.6875,
+          "delta_ci95_pp": [
+            0.0,
+            10.9375
+          ],
+          "regressions": 0,
+          "recoveries": 3,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_tax_price": {
+          "samples": 47,
+          "independent_groups": 47,
+          "reference_em": 0.7021276595744681,
+          "candidate_em": 0.7021276595744681,
+          "delta_pp": 0.0,
+          "delta_ci95_pp": [
+            -6.382978723404255,
+            6.382978723404255
+          ],
+          "regressions": 1,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.030303030303030304,
+          "insufficient_groups": false
+        },
+        "receipt_total_price": {
+          "samples": 98,
+          "independent_groups": 98,
+          "reference_em": 0.9591836734693877,
+          "candidate_em": 0.9489795918367347,
+          "delta_pp": -1.0204081632652962,
+          "delta_ci95_pp": [
+            -5.1020408163265305,
+            2.0408163265306123
+          ],
+          "regressions": 2,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.02127659574468085,
+          "insufficient_groups": false
+        }
+      },
+      "overall": {
+        "samples": 273,
+        "independent_groups": 100,
+        "reference_em": 0.8681318681318682,
+        "candidate_em": 0.8864468864468864,
+        "delta_pp": 1.831501831501825,
+        "delta_ci95_pp": [
+          -0.7518796992481203,
+          4.7272727272727275
+        ],
+        "regressions": 4,
+        "recoveries": 9,
+        "regression_rate_on_reference_correct": 0.016877637130801686,
+        "insufficient_groups": false
+      },
+      "scope": "Post hoc diagnostic after dev image review: ignore only whitespace following an exact Rp prefix; preserve case, currency, signs and all decimal/thousands punctuation. Primary quality and frozen gates still use literal annotation EM."
+    },
+    "test": {
+      "tasks": {
+        "receipt_cashprice": {
+          "samples": 65,
+          "independent_groups": 65,
+          "reference_em": 0.8153846153846154,
+          "candidate_em": 0.8769230769230769,
+          "delta_pp": 6.153846153846154,
+          "delta_ci95_pp": [
+            1.5384615384615385,
+            12.307692307692308
+          ],
+          "regressions": 0,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_changeprice": {
+          "samples": 56,
+          "independent_groups": 56,
+          "reference_em": 0.8214285714285714,
+          "candidate_em": 0.8392857142857143,
+          "delta_pp": 1.7857142857142905,
+          "delta_ci95_pp": [
+            0.0,
+            5.357142857142857
+          ],
+          "regressions": 0,
+          "recoveries": 1,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_tax_price": {
+          "samples": 42,
+          "independent_groups": 42,
+          "reference_em": 0.7619047619047619,
+          "candidate_em": 0.8333333333333334,
+          "delta_pp": 7.142857142857151,
+          "delta_ci95_pp": [
+            0.0,
+            16.666666666666664
+          ],
+          "regressions": 0,
+          "recoveries": 3,
+          "regression_rate_on_reference_correct": 0.0,
+          "insufficient_groups": false
+        },
+        "receipt_total_price": {
+          "samples": 95,
+          "independent_groups": 95,
+          "reference_em": 0.8421052631578947,
+          "candidate_em": 0.8631578947368421,
+          "delta_pp": 2.1052631578947434,
+          "delta_ci95_pp": [
+            -3.1578947368421053,
+            7.368421052631578
+          ],
+          "regressions": 2,
+          "recoveries": 4,
+          "regression_rate_on_reference_correct": 0.025,
+          "insufficient_groups": false
+        }
+      },
+      "overall": {
+        "samples": 258,
+        "independent_groups": 99,
+        "reference_em": 0.8178294573643411,
+        "candidate_em": 0.8565891472868217,
+        "delta_pp": 3.875968992248058,
+        "delta_ci95_pp": [
+          1.1406844106463878,
+          7.003891050583658
+        ],
+        "regressions": 2,
+        "recoveries": 12,
+        "regression_rate_on_reference_correct": 0.009478672985781991,
+        "insufficient_groups": false
+      },
+      "scope": "Post hoc diagnostic after dev image review: ignore only whitespace following an exact Rp prefix; preserve case, currency, signs and all decimal/thousands punctuation. Primary quality and frozen gates still use literal annotation EM."
+    }
+  },
+  "performance": {
+    "bf16": {
+      "1": {
+        "repetitions": 3,
+        "metrics": {
+          "latency_p95_ms": {
+            "values": [
+              657.6078124344349,
+              685.7189573347569,
+              646.8666605651379
+            ],
+            "median": 657.6078124344349,
+            "min": 646.8666605651379,
+            "max": 685.7189573347569
+          },
+          "ttft_p95_ms": {
+            "values": [
+              600.6525084376335,
+              588.5636880993843,
+              577.9711119830608
+            ],
+            "median": 588.5636880993843,
+            "min": 577.9711119830608,
+            "max": 600.6525084376335
+          },
+          "successful_requests_per_second": {
+            "values": [
+              2.9279179657276213,
+              3.0542614453988826,
+              3.0083409307168885
+            ],
+            "median": 3.0083409307168885,
+            "min": 2.9279179657276213,
+            "max": 3.0542614453988826
+          },
+          "success_rate": {
+            "values": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          }
+        },
+        "quality_requests": 273,
+        "answer_changes_from_first_run": [
+          0,
+          0,
+          0
+        ],
+        "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+      },
+      "4": {
+        "repetitions": 3,
+        "metrics": {
+          "latency_p95_ms": {
+            "values": [
+              1053.7278167903423,
+              1058.6730353534222,
+              1000.9857714176178
+            ],
+            "median": 1053.7278167903423,
+            "min": 1000.9857714176178,
+            "max": 1058.6730353534222
+          },
+          "ttft_p95_ms": {
+            "values": [
+              908.7002873420715,
+              954.2533904314041,
+              821.5128146111965
+            ],
+            "median": 908.7002873420715,
+            "min": 821.5128146111965,
+            "max": 954.2533904314041
+          },
+          "successful_requests_per_second": {
+            "values": [
+              7.491208785333654,
+              7.002004666732042,
+              6.702533770545298
+            ],
+            "median": 7.002004666732042,
+            "min": 6.702533770545298,
+            "max": 7.491208785333654
+          },
+          "success_rate": {
+            "values": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          }
+        },
+        "quality_requests": 273,
+        "answer_changes_from_first_run": [
+          0,
+          1,
+          3
+        ],
+        "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+      }
+    },
+    "awq": {
+      "1": {
+        "repetitions": 3,
+        "metrics": {
+          "latency_p95_ms": {
+            "values": [
+              489.67402055859566,
+              674.7822277247906,
+              605.7625487446785
+            ],
+            "median": 605.7625487446785,
+            "min": 489.67402055859566,
+            "max": 674.7822277247906
+          },
+          "ttft_p95_ms": {
+            "values": [
+              434.0415634214878,
+              582.2890847921371,
+              553.6326952278614
+            ],
+            "median": 553.6326952278614,
+            "min": 434.0415634214878,
+            "max": 582.2890847921371
+          },
+          "successful_requests_per_second": {
+            "values": [
+              3.867327196240219,
+              3.0926571247690613,
+              3.6609022604580637
+            ],
+            "median": 3.6609022604580637,
+            "min": 3.0926571247690613,
+            "max": 3.867327196240219
+          },
+          "success_rate": {
+            "values": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          }
+        },
+        "quality_requests": 273,
+        "answer_changes_from_first_run": [
+          0,
+          0,
+          0
+        ],
+        "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+      },
+      "4": {
+        "repetitions": 3,
+        "metrics": {
+          "latency_p95_ms": {
+            "values": [
+              951.0560482740402,
+              921.9783321022987,
+              1148.5480666160583
+            ],
+            "median": 951.0560482740402,
+            "min": 921.9783321022987,
+            "max": 1148.5480666160583
+          },
+          "ttft_p95_ms": {
+            "values": [
+              878.8628093898296,
+              766.0597674548626,
+              987.8710880875587
+            ],
+            "median": 878.8628093898296,
+            "min": 766.0597674548626,
+            "max": 987.8710880875587
+          },
+          "successful_requests_per_second": {
+            "values": [
+              8.405753262847643,
+              7.874147757582867,
+              7.28048402712438
+            ],
+            "median": 7.874147757582867,
+            "min": 7.28048402712438,
+            "max": 8.405753262847643
+          },
+          "success_rate": {
+            "values": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          }
+        },
+        "quality_requests": 273,
+        "answer_changes_from_first_run": [
+          0,
+          2,
+          3
+        ],
+        "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+      }
+    }
+  },
+  "memory": {
+    "bf16": {
+      "sampling_interval_seconds": 0.5,
+      "samples": 1481,
+      "errors": [],
+      "peak_framebuffer_mib_by_stage": {
+        "dev-c1-r1": 22179,
+        "dev-c1-r2": 22179,
+        "dev-c1-r3": 22179,
+        "dev-c4-r1": 22179,
+        "dev-c4-r2": 22179,
+        "dev-c4-r3": 22179,
+        "startup": 22179,
+        "test-c1-r1": 22185
+      },
+      "scope": "Sampled whole-device framebuffer usage on a GPU verified idle before launch; includes weights, KV cache, allocator and workspaces; not torch allocated memory"
+    },
+    "awq": {
+      "sampling_interval_seconds": 0.5,
+      "samples": 1021,
+      "errors": [],
+      "peak_framebuffer_mib_by_stage": {
+        "dev-c1-r1": 12393,
+        "dev-c1-r2": 12393,
+        "dev-c1-r3": 12393,
+        "dev-c4-r1": 12393,
+        "dev-c4-r2": 12393,
+        "dev-c4-r3": 12393,
+        "startup": 12393,
+        "test-c1-r1": 12399
+      },
+      "scope": "Sampled whole-device framebuffer usage on a GPU verified idle before launch; includes weights, KV cache, allocator and workspaces; not torch allocated memory"
+    }
+  },
+  "test_gates": {
+    "bf16": {
+      "accepted": false,
+      "checks": [
+        {
+          "metric": "task_em.receipt_cashprice",
+          "observed": 0.7846153846153846,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "task_em.receipt_changeprice",
+          "observed": 0.7857142857142857,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "task_em.receipt_tax_price",
+          "observed": 0.7380952380952381,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "task_em.receipt_total_price",
+          "observed": 0.8210526315789474,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "success_rate",
+          "observed": 1.0,
+          "target": 1,
+          "passed": true
+        },
+        {
+          "metric": "latency_p95_ms",
+          "observed": 703.4637667238712,
+          "target": 1500,
+          "passed": true
+        },
+        {
+          "metric": "ttft_p95_ms",
+          "observed": 561.4237189292908,
+          "target": 1000,
+          "passed": true
+        },
+        {
+          "metric": "truncated_requests",
+          "observed": 0,
+          "target": 0,
+          "passed": true
+        },
+        {
+          "metric": "source_groups",
+          "observed": 99,
+          "target": 90,
+          "passed": true
+        }
+      ],
+      "requests": 258,
+      "source_groups": 99,
+      "unconstrained_tasks": [],
+      "evidence_scope": "Observed quality and service budgets on this run; not a statistical guarantee or verified weight identity",
+      "predictions_sha256": "35c082b09f0c1aff26445d462c37bb649c1b9f6559aca75d7a0af3f4d18476c7",
+      "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"
+    },
+    "awq": {
+      "accepted": false,
+      "checks": [
+        {
+          "metric": "task_em.receipt_cashprice",
+          "observed": 0.8461538461538461,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "task_em.receipt_changeprice",
+          "observed": 0.8035714285714286,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "task_em.receipt_tax_price",
+          "observed": 0.8095238095238095,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "task_em.receipt_total_price",
+          "observed": 0.8421052631578947,
+          "target": 0.95,
+          "passed": false
+        },
+        {
+          "metric": "success_rate",
+          "observed": 1.0,
+          "target": 1,
+          "passed": true
+        },
+        {
+          "metric": "latency_p95_ms",
+          "observed": 550.8610233664513,
+          "target": 1500,
+          "passed": true
+        },
+        {
+          "metric": "ttft_p95_ms",
+          "observed": 480.1051802933216,
+          "target": 1000,
+          "passed": true
+        },
+        {
+          "metric": "truncated_requests",
+          "observed": 0,
+          "target": 0,
+          "passed": true
+        },
+        {
+          "metric": "source_groups",
+          "observed": 99,
+          "target": 90,
+          "passed": true
+        }
+      ],
+      "requests": 258,
+      "source_groups": 99,
+      "unconstrained_tasks": [],
+      "evidence_scope": "Observed quality and service budgets on this run; not a statistical guarantee or verified weight identity",
+      "predictions_sha256": "229cfff72180367e14cb9046b3002cfab975505f55a6573cf4fa9ee1d3b1a9c1",
+      "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"
+    }
+  },
+  "awq_kernel_log_evidence": [
+    "MarlinLinearKernel"
+  ],
+  "splits": {
+    "dev": {
+      "questions": 273,
+      "source_groups": 100,
+      "dataset_sha256": "beccbf2731b307c027e93eb4e59c7638907ff1f5907245f2d73fe1aa2f878e96"
+    },
+    "test": {
+      "questions": 258,
+      "source_groups": 99,
+      "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"
+    }
+  },
+  "protocol_sha256": "c67f979fbfd515ae98db1436dd7d7b4a2451047ec8f1da24baf9431f391f5c9c",
+  "interpretation": "Deployment comparison on pinned receipts and requests; one measured deployment per variant, a failed AWQ startup before inference, sequential BF16 then AWQ order, and request-level fingerprints limit causal claims. Error audit clues are not new accuracy metrics."
+}

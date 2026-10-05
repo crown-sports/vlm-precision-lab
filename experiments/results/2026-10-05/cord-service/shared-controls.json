@@ -1,0 +1,38 @@
+{
+  "engine": {
+    "dtype": "bfloat16",
+    "tensor_parallel_size": 1,
+    "max_model_len": 4096,
+    "max_num_seqs": 4,
+    "max_num_batched_tokens": 4096,
+    "kv_cache_memory_bytes": 2147483648,
+    "kv_cache_dtype": "auto",
+    "enforce_eager": true,
+    "enable_prefix_caching": false,
+    "mm_processor_cache_gb": 0,
+    "mm_processor_kwargs": {
+      "min_pixels": 3136,
+      "max_pixels": 393216
+    },
+    "generation_config": "vllm",
+    "attention_backend": "auto"
+  },
+  "packages": {
+    "vllm": "0.11.0",
+    "torch": "2.8.0",
+    "transformers": "4.57.3",
+    "compressed-tensors": "0.11.0",
+    "pillow": "12.0.0",
+    "nvidia-ml-py": "13.580.82"
+  },
+  "gpu": "GPU-caead419-c6a3-2ff4-6a59-0320907a4d0c",
+  "processor_files": {
+    "chat_template.json": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce",
+    "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+    "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+    "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+    "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+  }
+}

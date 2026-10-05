@@ -1,0 +1,55 @@
+INFO 10-05 14:16:38 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(APIServer pid=2480089)[0;0m INFO 10-05 14:16:41 [api_server.py:1839] vLLM API server version 0.11.0
+[1;36m(APIServer pid=2480089)[0;0m INFO 10-05 14:16:41 [utils.py:233] non-default args: {'host': '127.0.0.1', 'port': 18765, 'model': 'runs/cord-service-04/awq-controlled', 'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 4096, 'enforce_eager': True, 'served_model_name': ['model'], 'generation_config': 'vllm', 'kv_cache_memory_bytes': 2147483648, 'enable_prefix_caching': False, 'limit_mm_per_prompt': {'image': 1, 'video': 0}, 'mm_processor_kwargs': {'min_pixels': 3136, 'max_pixels': 393216}, 'mm_processor_cache_gb': 0.0, 'max_num_batched_tokens': 4096, 'max_num_seqs': 4}
+[1;36m(APIServer pid=2480089)[0;0m INFO 10-05 14:16:41 [arg_utils.py:504] HF_HUB_OFFLINE is True, replace model_id [runs/cord-service-04/awq-controlled] to model_path [runs/cord-service-04/awq-controlled]
+[1;36m(APIServer pid=2480089)[0;0m INFO 10-05 14:16:42 [model.py:547] Resolved architecture: Qwen3VLForConditionalGeneration
+[1;36m(APIServer pid=2480089)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=2480089)[0;0m INFO 10-05 14:16:42 [model.py:1510] Using max model len 4096
+[1;36m(APIServer pid=2480089)[0;0m INFO 10-05 14:16:45 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=4096.
+[1;36m(APIServer pid=2480089)[0;0m Traceback (most recent call last):
+[1;36m(APIServer pid=2480089)[0;0m   File "<frozen runpy>", line 198, in _run_module_as_main
+[1;36m(APIServer pid=2480089)[0;0m   File "<frozen runpy>", line 88, in _run_code
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1953, in <module>
+[1;36m(APIServer pid=2480089)[0;0m     uvloop.run(run_server(args))
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/uvloop/__init__.py", line 96, in run
+[1;36m(APIServer pid=2480089)[0;0m     return __asyncio.run(
+[1;36m(APIServer pid=2480089)[0;0m            ^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/root/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+[1;36m(APIServer pid=2480089)[0;0m     return runner.run(main)
+[1;36m(APIServer pid=2480089)[0;0m            ^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/root/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+[1;36m(APIServer pid=2480089)[0;0m     return self._loop.run_until_complete(task)
+[1;36m(APIServer pid=2480089)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "uvloop/loop.pyx", line 1515, in uvloop.loop.Loop.run_until_complete
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/uvloop/__init__.py", line 48, in wrapper
+[1;36m(APIServer pid=2480089)[0;0m     return await main
+[1;36m(APIServer pid=2480089)[0;0m            ^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1884, in run_server
+[1;36m(APIServer pid=2480089)[0;0m     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1902, in run_server_worker
+[1;36m(APIServer pid=2480089)[0;0m     async with build_async_engine_client(
+[1;36m(APIServer pid=2480089)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/root/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=2480089)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=2480089)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 180, in build_async_engine_client
+[1;36m(APIServer pid=2480089)[0;0m     async with build_async_engine_client_from_engine_args(
+[1;36m(APIServer pid=2480089)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/root/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+[1;36m(APIServer pid=2480089)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=2480089)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 206, in build_async_engine_client_from_engine_args
+[1;36m(APIServer pid=2480089)[0;0m     vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+[1;36m(APIServer pid=2480089)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1431, in create_engine_config
+[1;36m(APIServer pid=2480089)[0;0m     config = VllmConfig(
+[1;36m(APIServer pid=2480089)[0;0m              ^^^^^^^^^^^
+[1;36m(APIServer pid=2480089)[0;0m   File "/home/proj/vlm-precision-cord-20261005/.venv/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+[1;36m(APIServer pid=2480089)[0;0m     s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+[1;36m(APIServer pid=2480089)[0;0m pydantic_core._pydantic_core.ValidationError: 2 validation errors for VllmConfig
+[1;36m(APIServer pid=2480089)[0;0m scale_dtype
+[1;36m(APIServer pid=2480089)[0;0m   Extra inputs are not permitted [type=extra_forbidden, input_value=None, input_type=NoneType]
+[1;36m(APIServer pid=2480089)[0;0m     For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden
+[1;36m(APIServer pid=2480089)[0;0m zp_dtype
+[1;36m(APIServer pid=2480089)[0;0m   Extra inputs are not permitted [type=extra_forbidden, input_value=None, input_type=NoneType]
+[1;36m(APIServer pid=2480089)[0;0m     For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden

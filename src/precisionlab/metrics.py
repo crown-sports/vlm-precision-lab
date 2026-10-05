@@ -17,6 +17,15 @@ def exact(answer, prediction):
     return normalize(answer) == normalize(prediction)
 
 
+def receipt_currency_spacing(text):
+    """Diagnostic Rp-prefix spacing only; retain every numeric separator/sign.
+
+    CORD annotations can insert a space absent from the printed currency prefix.
+    This optional scoring view does not replace literal EM or normalize values.
+    """
+    return re.sub(r"^([+-]?Rp)\s+(?=[0-9])", r"\1", normalize(text))
+
+
 def endpoints(text):
     match = re.fullmatch(r"([A-Za-z0-9_-]+)\s*,\s*([A-Za-z0-9_-]+)", normalize(text))
     return set(match.groups()) if match and match[1] != match[2] else None

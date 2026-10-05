@@ -1,0 +1,6 @@
+# Separate environment: preserve the earlier compression/HF environment.
+vllm==0.11.0
+transformers==4.57.3
+pyarrow==21.0.0
+Pillow==12.0.0
+nvidia-ml-py==13.580.82

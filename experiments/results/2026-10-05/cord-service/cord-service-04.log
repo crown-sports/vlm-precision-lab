@@ -1,0 +1,18 @@
+{"stage": "verifying_checkpoints", "splits": {"dev": {"questions": 273, "source_groups": 100, "dataset_sha256": "beccbf2731b307c027e93eb4e59c7638907ff1f5907245f2d73fe1aa2f878e96"}, "test": {"questions": 258, "source_groups": 99, "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"}}}
+{"stage": "starting_server", "variant": "bf16"}
+{"variant": "bf16", "run": "dev-c1-r1", "task_em": {"receipt_cashprice": 0.84375, "receipt_changeprice": 0.84375, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9387755102040817}, "rps": 2.9279179657276213}
+{"variant": "bf16", "run": "dev-c1-r2", "task_em": {"receipt_cashprice": 0.84375, "receipt_changeprice": 0.84375, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9387755102040817}, "rps": 3.0542614453988826}
+{"variant": "bf16", "run": "dev-c1-r3", "task_em": {"receipt_cashprice": 0.84375, "receipt_changeprice": 0.84375, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9387755102040817}, "rps": 3.0083409307168885}
+{"variant": "bf16", "run": "dev-c4-r1", "task_em": {"receipt_cashprice": 0.84375, "receipt_changeprice": 0.84375, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9387755102040817}, "rps": 7.491208785333654}
+{"variant": "bf16", "run": "dev-c4-r2", "task_em": {"receipt_cashprice": 0.84375, "receipt_changeprice": 0.84375, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9387755102040817}, "rps": 7.002004666732042}
+{"variant": "bf16", "run": "dev-c4-r3", "task_em": {"receipt_cashprice": 0.84375, "receipt_changeprice": 0.84375, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9285714285714286}, "rps": 6.702533770545298}
+{"stage": "starting_server", "variant": "awq"}
+Traceback (most recent call last):
+  File "/home/proj/vlm-precision-cord-20261005/experiments/run_service_study.py", line 279, in <module>
+    main()
+  File "/home/proj/vlm-precision-cord-20261005/experiments/run_service_study.py", line 241, in main
+    variant["advertised_models"] = wait_ready(process, endpoint, args.startup_timeout)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/proj/vlm-precision-cord-20261005/experiments/run_service_study.py", line 126, in wait_ready
+    raise RuntimeError(f"Owned server exited with {process.returncode}; inspect server.log")
+RuntimeError: Owned server exited with 1; inspect server.log

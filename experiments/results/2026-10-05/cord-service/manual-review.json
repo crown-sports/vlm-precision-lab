@@ -1,0 +1,42 @@
+[
+  {
+    "validation_row": 21,
+    "image": "review-images/validation-21.png",
+    "image_sha256": "07310d0365e5b86c720d2b2a37ea9ff1868366ca33ab7eb31bc54fe1a58ed09c",
+    "issue": "annotation_currency_spacing",
+    "manual_observation": "Printed TAX value Rp20,446; CORD gt_parse contains Rp 20,446. Literal annotation EM penalizes the space difference.",
+    "scope": "Post hoc manual review of dev images; no inference inputs changed"
+  },
+  {
+    "validation_row": 34,
+    "image": "review-images/validation-34.png",
+    "image_sha256": "a9d15ca2d822247be438055910a20df491b99fe6d5337442e1d3186416eab15f",
+    "issue": "field_selection",
+    "manual_observation": "Printed SVC CHG 6% is 14,580 and PB1 10% is 25,758. BF16 tax response selected the service-charge value.",
+    "scope": "Post hoc manual review of dev images; no inference inputs changed"
+  },
+  {
+    "validation_row": 7,
+    "image": "review-images/validation-7.png",
+    "image_sha256": "52adf3336878fbd558951660d6ce52268dd3e636563ca1d7d7e004ccab96bff7",
+    "issue": "low_contrast_unresolved",
+    "manual_observation": "Printed PB1 row contains 5,409; BF16 returned 0. Low contrast and label recognition are hypotheses, not a proven model mechanism.",
+    "scope": "Post hoc manual review of dev images; no inference inputs changed"
+  },
+  {
+    "test_row": 20,
+    "image": "review-images/test-20.png",
+    "image_sha256": "6213439292eb4c2ad7e04afab6bb5bc7d1d5925d18dc392c36f233d394ca7c19",
+    "issue": "digit_substitution",
+    "manual_observation": "Printed total is 377,859. BF16 returned 377,859 and AWQ returned 377,059; the changed digit is a content regression.",
+    "scope": "Post hoc manual review after frozen test inference; no inference inputs or primary scoring changed"
+  },
+  {
+    "test_row": 42,
+    "image": "review-images/test-42.png",
+    "image_sha256": "6918a74b515e404d304d33266638698b9054d531eef63689c5ab5f754ce8c94a",
+    "issue": "cash_total_field_selection",
+    "manual_observation": "Printed Total is 16,500, Cash is 50,000 and change is 33,500. BF16 returned 16,500 and AWQ returned 50,000; AWQ selected the cash field for the total question.",
+    "scope": "Post hoc manual review after frozen test inference; no inference inputs or primary scoring changed"
+  }
+]
