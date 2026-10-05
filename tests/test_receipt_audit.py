@@ -3,7 +3,7 @@
 import importlib.util
 from pathlib import Path
 
-from precisionlab.metrics import exact
+from precisionlab.metrics import exact, receipt_currency_spacing
 
 
 spec = importlib.util.spec_from_file_location("analyze_study", Path(__file__).resolve().parents[1] / "experiments/analyze_service_study.py")
@@ -29,3 +29,11 @@ def test_a_lost_minus_sign_is_not_a_same_digit_clue():
     result = audit.error_audit([{"id": "x", "group_id": "r", "task": "amount", "answer": "-12.50", "image": "r.png"}],
                               [{"id": "x", "prediction": "12.50", "success": True}])
     assert result["counts"] == {"other_mismatch": 1}
+
+
+def test_currency_spacing_view_preserves_amount_values_signs_and_currency():
+    assert receipt_currency_spacing("Rp 20,446") == receipt_currency_spacing("Rp20,446")
+    for left, right in (("Rp12.50", "Rp1,250"), ("-Rp12.50", "Rp12.50"),
+                        ("Rp20,446", "20,446"), ("RP 20,446", "Rp20,446"), ("Rp1,818", "Rp1.818")):
+        assert receipt_currency_spacing(left) != receipt_currency_spacing(right)
+    assert not exact("Rp 20,446", "Rp20,446")

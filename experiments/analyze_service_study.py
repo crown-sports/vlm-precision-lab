@@ -8,7 +8,7 @@ import re
 
 from precisionlab.data import fingerprint, load_samples, read_jsonl, sha256
 from precisionlab.gate import gate_service
-from precisionlab.metrics import compare, exact, normalize
+from precisionlab.metrics import compare, exact, normalize, receipt_currency_spacing
 from precisionlab.provenance import validate_manifests
 from precisionlab.study import check_splits, summarize_repetitions
 
@@ -65,7 +65,7 @@ def main():
     splits = check_splits(args.dev, args.test)
     if splits != json.loads((root / "split-evidence.json").read_text()):
         raise ValueError("Study datasets changed")
-    quality, audits, performance, memory = {}, {}, {}, {}
+    quality, audits, performance, memory, spacing = {}, {}, {}, {}, {}
     for split, dataset in (("dev", args.dev), ("test", args.test)):
         samples = load_samples(dataset)
         files = [root / mode / f"{split}-c1-r1" / "predictions.jsonl" for mode in ("bf16", "awq")]
@@ -79,6 +79,11 @@ def main():
                                   for t, m in result["tasks"].items()}
         quality[split] = result
         audits[split] = {mode: error_audit(samples, read_jsonl(file)) for mode, file in zip(("bf16", "awq"), files)}
+        diagnostic = compare([dict(s, answer=receipt_currency_spacing(s["answer"])) for s in samples],
+            *([dict(p, prediction=receipt_currency_spacing(p["prediction"])) for p in read_jsonl(file)] for file in files),
+            repetitions=protocol["bootstrap"]["repetitions"], seed=protocol["bootstrap"]["seed"])
+        spacing[split] = {"tasks": diagnostic["tasks"], "overall": diagnostic["overall"],
+                          "scope": "Post hoc diagnostic after dev image review: ignore only whitespace following an exact Rp prefix; preserve case, currency, signs and all decimal/thousands punctuation. Primary quality and frozen gates still use literal annotation EM."}
     gates = {}
     for mode in ("bf16", "awq"):
         performance[mode] = {str(c): summarize_repetitions(args.dev,
@@ -93,7 +98,7 @@ def main():
             raise ValueError("GPU memory profile is incomplete or differs from raw samples")
         memory[mode] = saved
     kernels = re.findall(r"Using (\w+) for CompressedTensorsWNA16", (root / "awq/server.log").read_text())
-    result = {"quality": quality, "error_audit": audits, "performance": performance, "memory": memory,
+    result = {"quality": quality, "error_audit": audits, "currency_spacing_diagnostic": spacing, "performance": performance, "memory": memory,
               "test_gates": gates, "awq_kernel_log_evidence": sorted(set(kernels)), "splits": splits,
               "protocol_sha256": recorded["protocol_sha256"],
               "interpretation": "Deployment comparison on pinned receipts and requests; one launch per variant and request-level fingerprints limit causal claims. Error audit clues are not new accuracy metrics."}

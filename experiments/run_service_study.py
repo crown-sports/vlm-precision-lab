@@ -24,6 +24,7 @@ from urllib.request import urlopen
 import pynvml
 
 from precisionlab.data import sha256
+from precisionlab.checkpoint import legacy_null_dtype_fields
 from precisionlab.gate import gate_service
 from precisionlab.serving import evaluate_service
 from precisionlab.study import check_splits, summarize_repetitions
@@ -39,7 +40,7 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
 
 
-def checkpoint_evidence(bf16, awq, output):
+def checkpoint_evidence(bf16, awq, output, *, resume=False):
     source = json.loads(Path(__file__).with_name("model-source.json").read_text())
     original = [i for i in source["siblings"] if i["rfilename"] != ".gitattributes"]
     for info in original:
@@ -53,16 +54,33 @@ def checkpoint_evidence(bf16, awq, output):
     # Preserve the original export. A new overlay uses exactly the BF16
     # processor/tokenizer bytes, with the recorded AWQ weights and config.
     overlay = output / "awq-controlled"
-    overlay.mkdir()
+    overlay.mkdir(exist_ok=resume)
     for path in awq.iterdir():
-        if path.is_file() and path.name not in PROCESSOR_FILES:
-            (overlay / path.name).symlink_to(path.resolve())
+        if path.is_file() and path.name not in (*PROCESSOR_FILES, "config.json"):
+            target = overlay / path.name
+            if target.exists():
+                if not target.is_symlink() or target.resolve() != path.resolve():
+                    raise ValueError("Existing overlay differs from original checkpoint")
+            else:
+                target.symlink_to(path.resolve())
     for name in PROCESSOR_FILES:
         if (bf16 / name).exists():
-            (overlay / name).symlink_to((bf16 / name).resolve())
+            target = overlay / name
+            if target.exists():
+                if sha256(target) != sha256(bf16 / name):
+                    raise ValueError("Existing overlay processor changed")
+            else:
+                target.symlink_to((bf16 / name).resolve())
+    converted, removed = legacy_null_dtype_fields(json.loads((awq / "config.json").read_text()))
+    target = overlay / "config.json"
+    if target.is_symlink():
+        target.unlink()  # Only the owned overlay link; original file is untouched.
+    save(target, converted)
     evidence = {"base_revision": source["sha"], "original_files_verified": len(original),
                 "awq_files_verified": len(expected["files"]),
                 "awq_export_manifest_sha256": sha256(awq / "compression-manifest.json"),
+                "config_adapter": {"removed_null_fields": removed, "original_sha256": sha256(awq / "config.json"),
+                                   "controlled_sha256": sha256(target), "weights_changed": False},
                 "processor_files": {n: sha256(bf16 / n) for n in PROCESSOR_FILES if (bf16 / n).exists()},
                 "weight_bytes": {"bf16": sum(f.stat().st_size for f in bf16.glob("*.safetensors")),
                                  "awq": sum(f.stat().st_size for f in awq.glob("*.safetensors"))},
@@ -174,6 +192,7 @@ def main():
     parser.add_argument("--gpu", type=int, required=True)
     parser.add_argument("--port", type=int, default=18765)
     parser.add_argument("--startup-timeout", type=float, default=900)
+    parser.add_argument("--resume-awq", action="store_true", help="Retain and verify a completed BF16 variant after an AWQ startup failure")
     parser.add_argument("--protocol", type=Path, default=Path(__file__).with_name("cord-service-protocol.json"))
     args = parser.parse_args()
     protocol = json.loads(args.protocol.read_text())
@@ -190,16 +209,42 @@ def main():
             parser.error("Selected GPU is already in use; choose an idle GPU")
         with socket.socket() as sock:
             sock.bind(("127.0.0.1", args.port))
-        args.output.mkdir(parents=True, exist_ok=False)
-        (args.output / "protocol.json").write_bytes(args.protocol.read_bytes())
-        save(args.output / "split-evidence.json", split_info)
+        previous = None
+        if args.resume_awq:
+            previous = json.loads((args.output / "study.json").read_text())
+            if (previous["status"] != "failed" or previous["variants"]["bf16"]["status"] != "completed"
+                    or previous["variants"]["awq"].get("dev")):
+                parser.error("Resume only an AWQ startup failure after a completed BF16 variant")
+            if (previous["protocol_sha256"] != sha256(args.protocol)
+                    or json.loads((args.output / "protocol.json").read_text()) != protocol
+                    or json.loads((args.output / "split-evidence.json").read_text()) != split_info
+                    or previous["gpu"]["uuid"] != gpu["uuid"]):
+                parser.error("Resume protocol, data or device differs")
+            # Validate every retained profile against the original raw requests.
+            for c in protocol["dev_concurrency"]:
+                summarize_repetitions(args.dev, [args.output / "bf16" / f"dev-c{c}-r{r+1}" for r in range(protocol["dev_repetitions"])])
+            gate_service(args.test, args.output / "bf16/test-c1-r1", protocol["test_gate"])
+        else:
+            args.output.mkdir(parents=True, exist_ok=False)
+            (args.output / "protocol.json").write_bytes(args.protocol.read_bytes())
+            save(args.output / "split-evidence.json", split_info)
         print(json.dumps({"stage": "verifying_checkpoints", "splits": split_info}), flush=True)
-        awq, checkpoints = checkpoint_evidence(args.bf16_model.resolve(), args.awq_model.resolve(), args.output)
+        awq, checkpoints = checkpoint_evidence(args.bf16_model.resolve(), args.awq_model.resolve(), args.output, resume=args.resume_awq)
         packages = {n: importlib.metadata.version(n) for n in ("vllm", "torch", "transformers", "compressed-tensors", "pillow", "nvidia-ml-py")}
         controls = {"engine": protocol["engine"], "packages": packages, "gpu": gpu["uuid"],
                     "processor_files": checkpoints["processor_files"]}
-        save(args.output / "shared-controls.json", controls)
-        study = {"status": "running", "recorded_at": datetime.now(timezone.utc).isoformat(), "gpu": gpu,
+        if previous:
+            if previous["packages"] != packages or json.loads((args.output / "shared-controls.json").read_text()) != controls:
+                parser.error("Resume environment or shared controls differs")
+            save(args.output / "study-before-resume.json", previous)
+            (args.output / "awq").rename(args.output / "awq-startup-failed")
+            study = previous
+            study.update(status="running", resume={"recorded_at": datetime.now(timezone.utc).isoformat(),
+                "script_sha256": sha256(__file__), "retained_variant": "bf16", "adapter": checkpoints["config_adapter"]})
+            study["failed_launches"] = [{"variant": "awq", "folder": "awq-startup-failed", "result": study["variants"]["awq"]}]
+        else:
+            save(args.output / "shared-controls.json", controls)
+            study = {"status": "running", "recorded_at": datetime.now(timezone.utc).isoformat(), "gpu": gpu,
                  "packages": packages, "script_sha256": sha256(__file__), "protocol_sha256": sha256(args.protocol), "variants": {}}
         save(args.output / "study.json", study)
         endpoint = f"http://127.0.0.1:{args.port}/v1"
@@ -221,6 +266,8 @@ def main():
             raise RuntimeError("CUDA and NVML device selections differ; no server launched")
         save(args.output / "cuda-device-evidence.json", selected)
         for mode, model in (("bf16", args.bf16_model.resolve()), ("awq", awq)):
+            if args.resume_awq and mode == "bf16":
+                continue
             idle = gpu_snapshot(args.gpu)
             if idle["compute_pids"] or int(idle["used_mib"]) > 1024:
                 raise RuntimeError("GPU did not return to idle before next owned launch")
