@@ -46,7 +46,7 @@ HF 记录核对实际输入张量指纹；服务记录核对发送的图片、�
 自定义量化算法、CUDA 算子或加速收益主张。现阶段定位为评测与部署检查组件。
 
 [使用步骤](service-evaluation.md) · [旧实验明细](experiments.zh-CN.md) ·
-[原研究设计（包含待验证假设）](https://github.com/chrischen-coder/vlm-precision-lab/blob/4ed0b85a4cffbd1aab2b6131e76dd04f1a4586e2/docs/design.zh-CN.md)
+[原研究设计（包含待验证假设）](https://github.com/crown-sports/vlm-precision-lab/blob/4ed0b85a4cffbd1aab2b6131e76dd04f1a4586e2/docs/design.zh-CN.md)
 
 后续只有确认了实际内容损失或执行瓶颈，才开展针对性方法改进；
 需要与适用的强基线比较，并计入校准、搜索和部署成本。

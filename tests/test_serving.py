@@ -191,3 +191,20 @@ def test_recipe_runtime_gates_require_equal_workloads_and_real_measurements():
     options[1]["service_profile"]["workload_sha256"] = "different-concurrency"
     with pytest.raises(ValueError, match="different workloads"):
         choose_recipe(options, **constraints)
+
+
+def test_repetitions_do_not_multiply_quality_data_and_refuse_changed_controls(labelled_images, service, tmp_path):
+    from precisionlab.study import summarize_repetitions
+    dataset, rows = labelled_images
+    write_jsonl(dataset, rows[:1])
+    endpoint, _ = service
+    runs = [tmp_path / f"repeat-{i}" for i in range(3)]
+    for i, run in enumerate(runs):
+        evaluate_service(dataset, run, endpoint=endpoint, model="fixture-only", warmup=0,
+                         concurrency=2 if i == 2 else 1)
+    summary = summarize_repetitions(dataset, runs[:2])
+    assert summary["repetitions"] == 2 and summary["quality_requests"] == 1
+    assert summary["answer_changes_from_first_run"] == [0, 0]
+    assert len(summary["metrics"]["latency_p95_ms"]["values"]) == 2
+    with pytest.raises(ValueError, match="different workloads"):
+        summarize_repetitions(dataset, runs)
