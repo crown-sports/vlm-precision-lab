@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-10-05T06:53:06.088127+00:00",
+  "uuid": "GPU-caead419-c6a3-2ff4-6a59-0320907a4d0c",
+  "used_mib": 497,
+  "compute_pids": [],
+  "utilization_percent": 0,
+  "scope": "Post-study whole-device idle check, not part of performance sampling"
+}

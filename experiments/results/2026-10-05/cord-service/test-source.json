@@ -1,0 +1,35 @@
+{
+  "repository": "naver-clova-ix/cord-v2",
+  "revision": "7f0115a4b758a71d6473b8d085751692da2fef98",
+  "license": "CC-BY-4.0",
+  "source_files": [
+    {
+      "rfilename": "data/test-00000-of-00001-9c204eb3f4e11791.parquet",
+      "blobId": "a674a6aef479b0c87cbfe428baa603cfc2901391",
+      "size": 234202795,
+      "lfs": {
+        "sha256": "51c65f1788faff392abe2a0b55b023eb23e9be551c509138eaa3a832514224e7",
+        "size": 234202795,
+        "pointerSize": 134
+      }
+    }
+  ],
+  "documents": {
+    "test": 100
+  },
+  "samples": 258,
+  "skipped_fields": {
+    "total.cashprice:missing-or-ambiguous": 35,
+    "total.changeprice:missing-or-ambiguous": 44,
+    "sub_total.tax_price:missing-or-ambiguous": 58,
+    "total.total_price:missing-or-ambiguous": 5
+  },
+  "fields": {
+    "total.total_price": "total amount",
+    "total.cashprice": "cash amount paid",
+    "total.changeprice": "change returned",
+    "sub_total.tax_price": "tax amount"
+  },
+  "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc",
+  "scoring": "literal field transcription; punctuation/currency differences count as errors, not proven numeric-content loss"
+}

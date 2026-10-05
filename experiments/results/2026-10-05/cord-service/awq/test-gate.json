@@ -1,0 +1,65 @@
+{
+  "accepted": false,
+  "checks": [
+    {
+      "metric": "task_em.receipt_cashprice",
+      "observed": 0.8461538461538461,
+      "target": 0.95,
+      "passed": false
+    },
+    {
+      "metric": "task_em.receipt_changeprice",
+      "observed": 0.8035714285714286,
+      "target": 0.95,
+      "passed": false
+    },
+    {
+      "metric": "task_em.receipt_tax_price",
+      "observed": 0.8095238095238095,
+      "target": 0.95,
+      "passed": false
+    },
+    {
+      "metric": "task_em.receipt_total_price",
+      "observed": 0.8421052631578947,
+      "target": 0.95,
+      "passed": false
+    },
+    {
+      "metric": "success_rate",
+      "observed": 1.0,
+      "target": 1,
+      "passed": true
+    },
+    {
+      "metric": "latency_p95_ms",
+      "observed": 550.8610233664513,
+      "target": 1500,
+      "passed": true
+    },
+    {
+      "metric": "ttft_p95_ms",
+      "observed": 480.1051802933216,
+      "target": 1000,
+      "passed": true
+    },
+    {
+      "metric": "truncated_requests",
+      "observed": 0,
+      "target": 0,
+      "passed": true
+    },
+    {
+      "metric": "source_groups",
+      "observed": 99,
+      "target": 90,
+      "passed": true
+    }
+  ],
+  "requests": 258,
+  "source_groups": 99,
+  "unconstrained_tasks": [],
+  "evidence_scope": "Observed quality and service budgets on this run; not a statistical guarantee or verified weight identity",
+  "predictions_sha256": "229cfff72180367e14cb9046b3002cfab975505f55a6573cf4fa9ee1d3b1a9c1",
+  "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"
+}

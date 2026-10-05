@@ -1,0 +1,552 @@
+{
+  "status": "completed",
+  "recorded_at": "2026-10-05T06:03:58.448332+00:00",
+  "gpu": {
+    "uuid": "GPU-caead419-c6a3-2ff4-6a59-0320907a4d0c",
+    "name": "NVIDIA GeForce RTX 5090",
+    "driver": "580.95.05",
+    "total_mib": 32607,
+    "used_mib": 497,
+    "compute_pids": [],
+    "utilization_percent": 0,
+    "power_watts": 62.634,
+    "temperature_c": 30,
+    "sm_clock_mhz": 2392
+  },
+  "packages": {
+    "vllm": "0.11.0",
+    "torch": "2.8.0",
+    "transformers": "4.57.3",
+    "compressed-tensors": "0.11.0",
+    "pillow": "12.0.0",
+    "nvidia-ml-py": "13.580.82"
+  },
+  "script_sha256": "2d94bbcdbe650346080433c3ba373cbc85e31d3fe371916954d1bb5995ec965e",
+  "protocol_sha256": "c67f979fbfd515ae98db1436dd7d7b4a2451047ec8f1da24baf9431f391f5c9c",
+  "variants": {
+    "bf16": {
+      "status": "completed",
+      "dev": {
+        "1": {
+          "repetitions": 3,
+          "metrics": {
+            "latency_p95_ms": {
+              "values": [
+                657.6078124344349,
+                685.7189573347569,
+                646.8666605651379
+              ],
+              "median": 657.6078124344349,
+              "min": 646.8666605651379,
+              "max": 685.7189573347569
+            },
+            "ttft_p95_ms": {
+              "values": [
+                600.6525084376335,
+                588.5636880993843,
+                577.9711119830608
+              ],
+              "median": 588.5636880993843,
+              "min": 577.9711119830608,
+              "max": 600.6525084376335
+            },
+            "successful_requests_per_second": {
+              "values": [
+                2.9279179657276213,
+                3.0542614453988826,
+                3.0083409307168885
+              ],
+              "median": 3.0083409307168885,
+              "min": 2.9279179657276213,
+              "max": 3.0542614453988826
+            },
+            "success_rate": {
+              "values": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            }
+          },
+          "quality_requests": 273,
+          "answer_changes_from_first_run": [
+            0,
+            0,
+            0
+          ],
+          "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+        },
+        "4": {
+          "repetitions": 3,
+          "metrics": {
+            "latency_p95_ms": {
+              "values": [
+                1053.7278167903423,
+                1058.6730353534222,
+                1000.9857714176178
+              ],
+              "median": 1053.7278167903423,
+              "min": 1000.9857714176178,
+              "max": 1058.6730353534222
+            },
+            "ttft_p95_ms": {
+              "values": [
+                908.7002873420715,
+                954.2533904314041,
+                821.5128146111965
+              ],
+              "median": 908.7002873420715,
+              "min": 821.5128146111965,
+              "max": 954.2533904314041
+            },
+            "successful_requests_per_second": {
+              "values": [
+                7.491208785333654,
+                7.002004666732042,
+                6.702533770545298
+              ],
+              "median": 7.002004666732042,
+              "min": 6.702533770545298,
+              "max": 7.491208785333654
+            },
+            "success_rate": {
+              "values": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            }
+          },
+          "quality_requests": 273,
+          "answer_changes_from_first_run": [
+            0,
+            1,
+            3
+          ],
+          "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+        }
+      },
+      "advertised_models": {
+        "object": "list",
+        "data": [
+          {
+            "id": "model",
+            "object": "model",
+            "created": 1791180375,
+            "owned_by": "vllm",
+            "root": "/home/proj/vlm-precision-lab/models/Qwen3-VL-8B-Instruct",
+            "parent": null,
+            "max_model_len": 4096,
+            "permission": [
+              {
+                "id": "modelperm-288d63d257cd4f13b1966ec915d5f4bb",
+                "object": "model_permission",
+                "created": 1791180375,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "startup_seconds": 133.1701083444059,
+      "test_profile": {
+        "requests": 258,
+        "successful_requests": 258,
+        "success_rate": 1.0,
+        "wall_seconds": 91.1855638846755,
+        "successful_requests_per_second": 2.829395235481557,
+        "latency_p50_ms": 297.5039891898632,
+        "latency_p95_ms": 703.4637667238712,
+        "ttft_p95_ms": 561.4237189292908,
+        "truncated_requests": 0,
+        "task_em": {
+          "receipt_cashprice": 0.7846153846153846,
+          "receipt_changeprice": 0.7857142857142857,
+          "receipt_tax_price": 0.7380952380952381,
+          "receipt_total_price": 0.8210526315789474
+        },
+        "concurrency": 1,
+        "warmup_requests": 4,
+        "latency_scope": "request serialization through completion or failure; includes all requests, excludes client image encoding",
+        "ttft_scope": "first nonempty visible content delta; excludes hidden reasoning tokens",
+        "throughput_scope": "closed-loop; includes client preparation and failed requests in wall time",
+        "cache_scope": "warmup performed; no server cache reset claimed",
+        "workload_sha256": "6116377df6f84bf7c10509cb8e3c92713f079ad776fe1dcbb24ae31d13dd0623"
+      },
+      "test_gate": {
+        "accepted": false,
+        "checks": [
+          {
+            "metric": "task_em.receipt_cashprice",
+            "observed": 0.7846153846153846,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "task_em.receipt_changeprice",
+            "observed": 0.7857142857142857,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "task_em.receipt_tax_price",
+            "observed": 0.7380952380952381,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "task_em.receipt_total_price",
+            "observed": 0.8210526315789474,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "success_rate",
+            "observed": 1.0,
+            "target": 1,
+            "passed": true
+          },
+          {
+            "metric": "latency_p95_ms",
+            "observed": 703.4637667238712,
+            "target": 1500,
+            "passed": true
+          },
+          {
+            "metric": "ttft_p95_ms",
+            "observed": 561.4237189292908,
+            "target": 1000,
+            "passed": true
+          },
+          {
+            "metric": "truncated_requests",
+            "observed": 0,
+            "target": 0,
+            "passed": true
+          },
+          {
+            "metric": "source_groups",
+            "observed": 99,
+            "target": 90,
+            "passed": true
+          }
+        ],
+        "requests": 258,
+        "source_groups": 99,
+        "unconstrained_tasks": [],
+        "evidence_scope": "Observed quality and service budgets on this run; not a statistical guarantee or verified weight identity",
+        "predictions_sha256": "35c082b09f0c1aff26445d462c37bb649c1b9f6559aca75d7a0af3f4d18476c7",
+        "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"
+      },
+      "memory": {
+        "sampling_interval_seconds": 0.5,
+        "samples": 1481,
+        "errors": [],
+        "peak_framebuffer_mib_by_stage": {
+          "dev-c1-r1": 22179,
+          "dev-c1-r2": 22179,
+          "dev-c1-r3": 22179,
+          "dev-c4-r1": 22179,
+          "dev-c4-r2": 22179,
+          "dev-c4-r3": 22179,
+          "startup": 22179,
+          "test-c1-r1": 22185
+        },
+        "scope": "Sampled whole-device framebuffer usage on a GPU verified idle before launch; includes weights, KV cache, allocator and workspaces; not torch allocated memory"
+      }
+    },
+    "awq": {
+      "status": "completed",
+      "dev": {
+        "1": {
+          "repetitions": 3,
+          "metrics": {
+            "latency_p95_ms": {
+              "values": [
+                489.67402055859566,
+                674.7822277247906,
+                605.7625487446785
+              ],
+              "median": 605.7625487446785,
+              "min": 489.67402055859566,
+              "max": 674.7822277247906
+            },
+            "ttft_p95_ms": {
+              "values": [
+                434.0415634214878,
+                582.2890847921371,
+                553.6326952278614
+              ],
+              "median": 553.6326952278614,
+              "min": 434.0415634214878,
+              "max": 582.2890847921371
+            },
+            "successful_requests_per_second": {
+              "values": [
+                3.867327196240219,
+                3.0926571247690613,
+                3.6609022604580637
+              ],
+              "median": 3.6609022604580637,
+              "min": 3.0926571247690613,
+              "max": 3.867327196240219
+            },
+            "success_rate": {
+              "values": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            }
+          },
+          "quality_requests": 273,
+          "answer_changes_from_first_run": [
+            0,
+            0,
+            0
+          ],
+          "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+        },
+        "4": {
+          "repetitions": 3,
+          "metrics": {
+            "latency_p95_ms": {
+              "values": [
+                951.0560482740402,
+                921.9783321022987,
+                1148.5480666160583
+              ],
+              "median": 951.0560482740402,
+              "min": 921.9783321022987,
+              "max": 1148.5480666160583
+            },
+            "ttft_p95_ms": {
+              "values": [
+                878.8628093898296,
+                766.0597674548626,
+                987.8710880875587
+              ],
+              "median": 878.8628093898296,
+              "min": 766.0597674548626,
+              "max": 987.8710880875587
+            },
+            "successful_requests_per_second": {
+              "values": [
+                8.405753262847643,
+                7.874147757582867,
+                7.28048402712438
+              ],
+              "median": 7.874147757582867,
+              "min": 7.28048402712438,
+              "max": 8.405753262847643
+            },
+            "success_rate": {
+              "values": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            }
+          },
+          "quality_requests": 273,
+          "answer_changes_from_first_run": [
+            0,
+            2,
+            3
+          ],
+          "quality_sample_size_scope": "Unique receipts in the first run; repeats are timing observations, not extra independent quality data"
+        }
+      },
+      "advertised_models": {
+        "object": "list",
+        "data": [
+          {
+            "id": "model",
+            "object": "model",
+            "created": 1791181578,
+            "owned_by": "vllm",
+            "root": "runs/cord-service-04/awq-controlled",
+            "parent": null,
+            "max_model_len": 4096,
+            "permission": [
+              {
+                "id": "modelperm-34593e910d3c4fbea1fde6d830814c66",
+                "object": "model_permission",
+                "created": 1791181578,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "startup_seconds": 55.07218195870519,
+      "test_profile": {
+        "requests": 258,
+        "successful_requests": 258,
+        "success_rate": 1.0,
+        "wall_seconds": 71.15875716134906,
+        "successful_requests_per_second": 3.625695702006113,
+        "latency_p50_ms": 216.3950763642788,
+        "latency_p95_ms": 550.8610233664513,
+        "ttft_p95_ms": 480.1051802933216,
+        "truncated_requests": 0,
+        "task_em": {
+          "receipt_cashprice": 0.8461538461538461,
+          "receipt_changeprice": 0.8035714285714286,
+          "receipt_tax_price": 0.8095238095238095,
+          "receipt_total_price": 0.8421052631578947
+        },
+        "concurrency": 1,
+        "warmup_requests": 4,
+        "latency_scope": "request serialization through completion or failure; includes all requests, excludes client image encoding",
+        "ttft_scope": "first nonempty visible content delta; excludes hidden reasoning tokens",
+        "throughput_scope": "closed-loop; includes client preparation and failed requests in wall time",
+        "cache_scope": "warmup performed; no server cache reset claimed",
+        "workload_sha256": "6116377df6f84bf7c10509cb8e3c92713f079ad776fe1dcbb24ae31d13dd0623"
+      },
+      "test_gate": {
+        "accepted": false,
+        "checks": [
+          {
+            "metric": "task_em.receipt_cashprice",
+            "observed": 0.8461538461538461,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "task_em.receipt_changeprice",
+            "observed": 0.8035714285714286,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "task_em.receipt_tax_price",
+            "observed": 0.8095238095238095,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "task_em.receipt_total_price",
+            "observed": 0.8421052631578947,
+            "target": 0.95,
+            "passed": false
+          },
+          {
+            "metric": "success_rate",
+            "observed": 1.0,
+            "target": 1,
+            "passed": true
+          },
+          {
+            "metric": "latency_p95_ms",
+            "observed": 550.8610233664513,
+            "target": 1500,
+            "passed": true
+          },
+          {
+            "metric": "ttft_p95_ms",
+            "observed": 480.1051802933216,
+            "target": 1000,
+            "passed": true
+          },
+          {
+            "metric": "truncated_requests",
+            "observed": 0,
+            "target": 0,
+            "passed": true
+          },
+          {
+            "metric": "source_groups",
+            "observed": 99,
+            "target": 90,
+            "passed": true
+          }
+        ],
+        "requests": 258,
+        "source_groups": 99,
+        "unconstrained_tasks": [],
+        "evidence_scope": "Observed quality and service budgets on this run; not a statistical guarantee or verified weight identity",
+        "predictions_sha256": "229cfff72180367e14cb9046b3002cfab975505f55a6573cf4fa9ee1d3b1a9c1",
+        "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"
+      },
+      "memory": {
+        "sampling_interval_seconds": 0.5,
+        "samples": 1021,
+        "errors": [],
+        "peak_framebuffer_mib_by_stage": {
+          "dev-c1-r1": 12393,
+          "dev-c1-r2": 12393,
+          "dev-c1-r3": 12393,
+          "dev-c4-r1": 12393,
+          "dev-c4-r2": 12393,
+          "dev-c4-r3": 12393,
+          "startup": 12393,
+          "test-c1-r1": 12399
+        },
+        "scope": "Sampled whole-device framebuffer usage on a GPU verified idle before launch; includes weights, KV cache, allocator and workspaces; not torch allocated memory"
+      }
+    }
+  },
+  "resume": {
+    "recorded_at": "2026-10-05T06:25:20.184115+00:00",
+    "script_sha256": "69f10ac753b0d4ecba47d9af37033eb2f0ce64d09ae0c1fb79d4a73e1f96d14b",
+    "retained_variant": "bf16",
+    "adapter": {
+      "removed_null_fields": [
+        "quantization_config.config_groups.group_0.weights.scale_dtype",
+        "quantization_config.config_groups.group_0.weights.zp_dtype"
+      ],
+      "original_sha256": "faf207fd9994c24749c30b6248ca6de7b0fdd66ebbf42760917761db1df33dee",
+      "controlled_sha256": "328b035bfa37e617d818ed8fd84c366add76edf72fd1bfc2fceaf9796b6701e4",
+      "weights_changed": false
+    }
+  },
+  "failed_launches": [
+    {
+      "variant": "awq",
+      "folder": "awq-startup-failed",
+      "result": {
+        "status": "failed",
+        "dev": {},
+        "error_type": "RuntimeError",
+        "memory": {
+          "sampling_interval_seconds": 0.5,
+          "samples": 54,
+          "errors": [],
+          "peak_framebuffer_mib_by_stage": {
+            "startup": 497
+          },
+          "scope": "Sampled whole-device framebuffer usage on a GPU verified idle before launch; includes weights, KV cache, allocator and workspaces; not torch allocated memory"
+        }
+      }
+    }
+  ]
+}

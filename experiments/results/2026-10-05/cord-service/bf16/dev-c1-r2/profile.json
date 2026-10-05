@@ -1,0 +1,24 @@
+{
+  "requests": 273,
+  "successful_requests": 273,
+  "success_rate": 1.0,
+  "wall_seconds": 89.38331078737974,
+  "successful_requests_per_second": 3.0542614453988826,
+  "latency_p50_ms": 248.9619143307209,
+  "latency_p95_ms": 685.7189573347569,
+  "ttft_p95_ms": 588.5636880993843,
+  "truncated_requests": 0,
+  "task_em": {
+    "receipt_cashprice": 0.84375,
+    "receipt_changeprice": 0.84375,
+    "receipt_tax_price": 0.6595744680851063,
+    "receipt_total_price": 0.9387755102040817
+  },
+  "concurrency": 1,
+  "warmup_requests": 4,
+  "latency_scope": "request serialization through completion or failure; includes all requests, excludes client image encoding",
+  "ttft_scope": "first nonempty visible content delta; excludes hidden reasoning tokens",
+  "throughput_scope": "closed-loop; includes client preparation and failed requests in wall time",
+  "cache_scope": "warmup performed; no server cache reset claimed",
+  "workload_sha256": "7b3db91ef4bb5c18c41904e6bf7ad013a8856aadad0e432e4006336947663f4e"
+}

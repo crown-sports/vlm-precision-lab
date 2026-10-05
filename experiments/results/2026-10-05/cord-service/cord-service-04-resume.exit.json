@@ -1,0 +1,23 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "experiments/run_service_study.py",
+    "--resume-awq",
+    "--bf16-model",
+    "models/Qwen3-VL-8B-Instruct",
+    "--awq-model",
+    "models/awq-stratified",
+    "--dev",
+    "runs/cord-dev/samples.jsonl",
+    "--test",
+    "runs/cord-test/samples.jsonl",
+    "--gpu",
+    "0",
+    "--output",
+    "runs/cord-service-04"
+  ],
+  "exit_code": 0,
+  "seconds": 668.2243267446756,
+  "finished_at": "2026-10-05T06:34:01.102477+00:00",
+  "state": "success"
+}

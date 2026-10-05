@@ -1,0 +1,16 @@
+{
+  "sampling_interval_seconds": 0.5,
+  "samples": 1021,
+  "errors": [],
+  "peak_framebuffer_mib_by_stage": {
+    "dev-c1-r1": 12393,
+    "dev-c1-r2": 12393,
+    "dev-c1-r3": 12393,
+    "dev-c4-r1": 12393,
+    "dev-c4-r2": 12393,
+    "dev-c4-r3": 12393,
+    "startup": 12393,
+    "test-c1-r1": 12399
+  },
+  "scope": "Sampled whole-device framebuffer usage on a GPU verified idle before launch; includes weights, KV cache, allocator and workspaces; not torch allocated memory"
+}

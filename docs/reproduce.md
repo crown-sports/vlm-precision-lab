@@ -1,5 +1,10 @@
 # Reproduce the recorded experiment
 
+The [CORD-v2 service study](cord-study.zh-CN.md#复现) uses real receipts, a separate
+vLLM environment and whole-device NVML measurements. The steps below reproduce
+the earlier synthetic HF calibration/export experiment whose AWQ checkpoint was
+reused in that study.
+
 Use the published `examples/diagnostic-v2/samples.jsonl` for the recorded image
 bytes. A regenerated dataset with another font is a different experiment.
 

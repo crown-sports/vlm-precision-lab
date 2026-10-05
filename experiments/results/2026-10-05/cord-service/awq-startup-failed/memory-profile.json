@@ -1,0 +1,9 @@
+{
+  "sampling_interval_seconds": 0.5,
+  "samples": 54,
+  "errors": [],
+  "peak_framebuffer_mib_by_stage": {
+    "startup": 497
+  },
+  "scope": "Sampled whole-device framebuffer usage on a GPU verified idle before launch; includes weights, KV cache, allocator and workspaces; not torch allocated memory"
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "mode": "service",
+  "base_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "controls": {
+    "dataset_sha256": "beccbf2731b307c027e93eb4e59c7638907ff1f5907245f2d73fe1aa2f878e96",
+    "split": "dev",
+    "seed": 42,
+    "decode": {
+      "temperature": 0,
+      "max_tokens": 32
+    },
+    "input_fingerprint_scope": "request",
+    "server_config_declared": {
+      "engine": {
+        "dtype": "bfloat16",
+        "tensor_parallel_size": 1,
+        "max_model_len": 4096,
+        "max_num_seqs": 4,
+        "max_num_batched_tokens": 4096,
+        "kv_cache_memory_bytes": 2147483648,
+        "kv_cache_dtype": "auto",
+        "enforce_eager": true,
+        "enable_prefix_caching": false,
+        "mm_processor_cache_gb": 0,
+        "mm_processor_kwargs": {
+          "min_pixels": 3136,
+          "max_pixels": 393216
+        },
+        "generation_config": "vllm",
+        "attention_backend": "auto"
+      },
+      "packages": {
+        "vllm": "0.11.0",
+        "torch": "2.8.0",
+        "transformers": "4.57.3",
+        "compressed-tensors": "0.11.0",
+        "pillow": "12.0.0",
+        "nvidia-ml-py": "13.580.82"
+      },
+      "gpu": "GPU-caead419-c6a3-2ff4-6a59-0320907a4d0c",
+      "processor_files": {
+        "chat_template.json": "5c72a170d2a4a1a3bc5adad2e689ae28138a9700e5b8c96c0266331e86c0acce",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "video_preprocessor_config.json": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+      }
+    }
+  },
+  "profile": {
+    "requests": 273,
+    "successful_requests": 273,
+    "success_rate": 1.0,
+    "wall_seconds": 70.591389387846,
+    "successful_requests_per_second": 3.867327196240219,
+    "latency_p50_ms": 205.5627405643463,
+    "latency_p95_ms": 489.67402055859566,
+    "ttft_p95_ms": 434.0415634214878,
+    "truncated_requests": 0,
+    "task_em": {
+      "receipt_cashprice": 0.890625,
+      "receipt_changeprice": 0.890625,
+      "receipt_tax_price": 0.6595744680851063,
+      "receipt_total_price": 0.9285714285714286
+    },
+    "concurrency": 1,
+    "warmup_requests": 4,
+    "latency_scope": "request serialization through completion or failure; includes all requests, excludes client image encoding",
+    "ttft_scope": "first nonempty visible content delta; excludes hidden reasoning tokens",
+    "throughput_scope": "closed-loop; includes client preparation and failed requests in wall time",
+    "cache_scope": "warmup performed; no server cache reset claimed",
+    "workload_sha256": "7b3db91ef4bb5c18c41904e6bf7ad013a8856aadad0e432e4006336947663f4e"
+  },
+  "samples": 273,
+  "served_model_alias": "model",
+  "predictions_sha256": "067cf9c2f0407b05aef3c9c27a6b5ecf4e830cf55a1d5b835dfd45ce234338c3",
+  "script_sha256": "0fba8dfecf68f8edb1218cd8a097e82778e67eab6217416348a7b2d231438271",
+  "server_identity_verified": false,
+  "evidence_scope": "same client requests; model revision and server settings are declarations, not server attestation",
+  "recorded_at": "2026-10-05T06:27:33.324644+00:00"
+}

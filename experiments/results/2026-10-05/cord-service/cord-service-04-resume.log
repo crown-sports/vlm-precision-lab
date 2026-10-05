@@ -1,0 +1,9 @@
+{"stage": "verifying_checkpoints", "splits": {"dev": {"questions": 273, "source_groups": 100, "dataset_sha256": "beccbf2731b307c027e93eb4e59c7638907ff1f5907245f2d73fe1aa2f878e96"}, "test": {"questions": 258, "source_groups": 99, "dataset_sha256": "8f3f803fe979678aee4bcbad367cd8c20a2a9dd34c6d451a513d5179c98fddcc"}}}
+{"stage": "starting_server", "variant": "awq"}
+{"variant": "awq", "run": "dev-c1-r1", "task_em": {"receipt_cashprice": 0.890625, "receipt_changeprice": 0.890625, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9285714285714286}, "rps": 3.867327196240219}
+{"variant": "awq", "run": "dev-c1-r2", "task_em": {"receipt_cashprice": 0.890625, "receipt_changeprice": 0.890625, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9285714285714286}, "rps": 3.0926571247690613}
+{"variant": "awq", "run": "dev-c1-r3", "task_em": {"receipt_cashprice": 0.890625, "receipt_changeprice": 0.890625, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9285714285714286}, "rps": 3.6609022604580637}
+{"variant": "awq", "run": "dev-c4-r1", "task_em": {"receipt_cashprice": 0.890625, "receipt_changeprice": 0.875, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9285714285714286}, "rps": 8.405753262847643}
+{"variant": "awq", "run": "dev-c4-r2", "task_em": {"receipt_cashprice": 0.875, "receipt_changeprice": 0.890625, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9285714285714286}, "rps": 7.874147757582867}
+{"variant": "awq", "run": "dev-c4-r3", "task_em": {"receipt_cashprice": 0.875, "receipt_changeprice": 0.890625, "receipt_tax_price": 0.6595744680851063, "receipt_total_price": 0.9387755102040817}, "rps": 7.28048402712438}
+{"status": "completed", "output": "runs/cord-service-04"}
